@@ -1,0 +1,1 @@
+# ideta-cross-platform-lib
