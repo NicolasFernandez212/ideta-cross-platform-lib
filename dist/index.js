@@ -1,4 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var bot_entity_1 = require("./common/bot/entities/bot.entity");
-exports.CrossBotInterface = bot_entity_1.CrossBotInterface;
+var constants_1 = require("./common/billing/constants");
+exports.AddonsPriceConvention = constants_1.AddonsPriceConvention;
+exports.PlanNameConvention = constants_1.PlanNameConvention;
+exports.Plans = constants_1.Plans;
+var entities_1 = require("./common/billing/entities");
+exports.BillingPlan = entities_1.BillingPlan;
+exports.BotBillingAddons = entities_1.BotBillingAddons;
+exports.BotBillingOptions = entities_1.BotBillingOptions;

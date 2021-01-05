@@ -17,5 +17,6 @@
   "bugs": {
     "url": "https://github.com/papagei89/ideta-cross-platform-lib/issues"
   },
-  "homepage": "https://github.com/papagei89/ideta-cross-platform-lib#readme"
+  "homepage": "https://github.com/papagei89/ideta-cross-platform-lib#readme",
+  "dependencies": {}
 }
