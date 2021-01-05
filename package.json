@@ -1,0 +1,19 @@
+{
+  "name": "ideta-cross-platform-lib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/papagei89/ideta-cross-platform-lib.git"
+  },
+  "author": "Ideta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/papagei89/ideta-cross-platform-lib/issues"
+  },
+  "homepage": "https://github.com/papagei89/ideta-cross-platform-lib#readme"
+}
