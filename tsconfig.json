@@ -4,7 +4,6 @@
     "target": "es2015",
     "declaration": true,
     "outDir": "dist",
-    "baseUrl": "./",
     "noImplicitReturns": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
