@@ -1,5 +1,5 @@
-import { BillingPlan } from "./entities";
-import { PlanId, PlanName } from "./types";
+import { BillingPlan } from './entities';
+import { PlanId, PlanName } from './types';
 export declare const AddonsPriceConvention: {
     contributor: number;
     additional_users: number;

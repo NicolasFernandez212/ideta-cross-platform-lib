@@ -1,5 +1,6 @@
-import { PlanNameConvention } from "./constants";
-import { PlanId, PlanName } from "./types";
+import { PlanNameConvention } from './constants';
+import { PlanInfos } from './interfaces';
+import { PlanId, PlanName } from './types';
 
 export class BotBillingAddons {
   public contributor: number;
@@ -38,48 +39,35 @@ export class BotBillingOptions {
     this.broadcast_access = options.broadcast_access || false;
   }
 
-  public updateOption(
-    option: keyof BotBillingOptions,
-    value: number | boolean
-  ) {
+  public updateOption(option: keyof BotBillingOptions, value: number | boolean) {
     if (typeof this[option] !== typeof value) return;
 
     switch (option) {
-      case "deployments":
-        this.deployments =
-          this.deployments + (value as number) >= 0
-            ? this.deployments + (value as number)
-            : 0;
+      case 'deployments':
+        this.deployments = this.deployments + (value as number) >= 0 ? this.deployments + (value as number) : 0;
         break;
-      case "users":
-        this.users =
-          this.users + (value as number) >= 0
-            ? this.users + (value as number)
-            : 0;
+      case 'users':
+        this.users = this.users + (value as number) >= 0 ? this.users + (value as number) : 0;
         break;
-      case "nlp":
-        this.nlp =
-          this.nlp + (value as number) >= 0 ? this.nlp + (value as number) : 0;
+      case 'nlp':
+        this.nlp = this.nlp + (value as number) >= 0 ? this.nlp + (value as number) : 0;
         break;
-      case "api_storages":
-        this.api_storages =
-          this.api_storages + (value as number) >= 0
-            ? this.api_storages + (value as number)
-            : 0;
+      case 'api_storages':
+        this.api_storages = this.api_storages + (value as number) >= 0 ? this.api_storages + (value as number) : 0;
         break;
-      case "sso_connection":
+      case 'sso_connection':
         this.sso_connection = value as boolean;
         break;
-      case "stripe_connection":
+      case 'stripe_connection':
         this.stripe_connection = value as boolean;
         break;
-      case "analytics_access":
+      case 'analytics_access':
         this.analytics_access = value as boolean;
         break;
-      case "support_access":
+      case 'support_access':
         this.support_access = value as boolean;
         break;
-      case "broadcast_access":
+      case 'broadcast_access':
         this.broadcast_access = value as boolean;
         break;
     }
@@ -95,7 +83,7 @@ export class BillingPlan extends BotBillingOptions {
 
   constructor(plan: Partial<BillingPlan>) {
     super(plan);
-    this.id = plan.id || "free";
+    this.id = plan.id || 'free';
     this.name = plan.name || PlanNameConvention[this.id];
     this.outperforms = plan.outperforms || [];
     this.is_free_plan = plan.is_free_plan || false;
@@ -106,10 +94,7 @@ export class BillingPlan extends BotBillingOptions {
    * returns TRUE if the compared plan can replace the current one
    */
   public isReplacing(previous: PlanId, enable_downgrade?: boolean): boolean {
-    return (
-      previous !== this.id &&
-      (enable_downgrade || this.outperforms.indexOf(previous) > -1)
-    );
+    return previous !== this.id && (enable_downgrade || this.outperforms.indexOf(previous) > -1);
   }
 
   /*
@@ -139,15 +124,15 @@ export class BotBilling {
   public plans: { [plan in PlanId]?: PlanInfos };
   public options: BotBillingOptions;
   public addons: BotBillingAddons;
-  public enable_downgrade: "none" | "no_free" | "all";
+  public enable_downgrade: 'none' | 'no_free' | 'all';
 
   constructor(infos: Partial<BotBilling>) {
-    this.activePlan = infos.activePlan || "free";
+    this.activePlan = infos.activePlan || 'free';
     this.plan_period_start = Date.now();
     this.plans = infos.plans || {};
     this.options = new BotBillingOptions(infos.options || {});
     this.addons = new BotBillingAddons(infos.addons || {});
-    this.enable_downgrade = infos.enable_downgrade || "none";
+    this.enable_downgrade = infos.enable_downgrade || 'none';
   }
 
   // Not used in Front
@@ -181,22 +166,7 @@ export class BotBilling {
     this.plans[planId].active_trial = this.plans[planId].active_trial || null;
     this.plans[planId].expired_trial = this.plans[planId].expired_trial || null;
     this.plans[planId].id = this.plans[planId].id || planId;
-    this.plans[planId].name =
-      this.plans[planId].name || PlanNameConvention[planId];
+    this.plans[planId].name = this.plans[planId].name || PlanNameConvention[planId];
     this.plans[planId].periods = this.plans[planId].periods || [];
   }
-}
-
-// Used in billing infos contained in bots
-export interface PlanInfos {
-  id?: PlanId;
-  name?: PlanName;
-  active_trial?: boolean; //  is admin on trial for this plan
-  expired_trial?: boolean; // has admin already used his trial
-  periods?: PlanPeriod[]; // records of all past periods in this plan
-}
-
-export interface PlanPeriod {
-  start?: number;
-  end?: number;
 }

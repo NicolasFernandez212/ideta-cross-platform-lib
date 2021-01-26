@@ -1,4 +1,5 @@
-import { PlanId, PlanName } from "./types";
+import { PlanInfos } from './interfaces';
+import { PlanId, PlanName } from './types';
 export declare class BotBillingAddons {
     contributor: number;
     additional_users: number;
@@ -37,19 +38,8 @@ export declare class BotBilling {
     };
     options: BotBillingOptions;
     addons: BotBillingAddons;
-    enable_downgrade: "none" | "no_free" | "all";
+    enable_downgrade: 'none' | 'no_free' | 'all';
     constructor(infos: Partial<BotBilling>);
     switchPlan(previous: PlanId, current: PlanId): Promise<void>;
     private registerPlanDefaults;
-}
-export interface PlanInfos {
-    id?: PlanId;
-    name?: PlanName;
-    active_trial?: boolean;
-    expired_trial?: boolean;
-    periods?: PlanPeriod[];
-}
-export interface PlanPeriod {
-    start?: number;
-    end?: number;
 }

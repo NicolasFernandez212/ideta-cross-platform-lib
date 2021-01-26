@@ -2,8 +2,8 @@
   "name": "ideta-cross-platform-lib",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "rimraf ./lib && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"

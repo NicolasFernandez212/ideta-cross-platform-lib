@@ -1,5 +1,5 @@
-import { BillingPlan } from "./entities";
-import { PlanId, PlanName } from "./types";
+import { BillingPlan } from './entities';
+import { PlanId, PlanName } from './types';
 
 export const AddonsPriceConvention = {
   contributor: 50,
@@ -9,16 +9,16 @@ export const AddonsPriceConvention = {
 };
 
 export const PlanNameConvention: { [key in PlanId]: PlanName } = {
-  free: "Free",
-  starter: "Starter",
-  starter_AI: "Starter AI",
-  professional: "Professional",
+  free: 'Free',
+  starter: 'Starter',
+  starter_AI: 'Starter AI',
+  professional: 'Professional',
 };
 
 export const Plans = [
   new BillingPlan({
-    name: "Free",
-    id: "free",
+    name: 'Free',
+    id: 'free',
     rate: 0,
     outperforms: [],
     is_free_plan: true,
@@ -34,10 +34,10 @@ export const Plans = [
   }),
 
   new BillingPlan({
-    name: "Starter",
-    id: "starter",
+    name: 'Starter',
+    id: 'starter',
     rate: 19,
-    outperforms: ["free"],
+    outperforms: ['free'],
     deployments: 1,
     users: 50000,
     nlp: 0,
@@ -50,10 +50,10 @@ export const Plans = [
   }),
 
   new BillingPlan({
-    name: "Starter AI",
-    id: "starter_AI",
+    name: 'Starter AI',
+    id: 'starter_AI',
     rate: 59,
-    outperforms: ["free", "starter"],
+    outperforms: ['free', 'starter'],
     deployments: 1,
     users: 50000,
     nlp: Infinity,
@@ -66,10 +66,10 @@ export const Plans = [
   }),
 
   new BillingPlan({
-    name: "Professional",
-    id: "professional",
+    name: 'Professional',
+    id: 'professional',
     rate: 299,
-    outperforms: ["free", "starter", "starter_AI"],
+    outperforms: ['free', 'starter', 'starter_AI'],
     deployments: Infinity,
     users: 50000,
     nlp: Infinity,
