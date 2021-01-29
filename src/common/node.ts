@@ -1,5 +1,6 @@
 export {
   ApiAsyncAction,
+  ApiData,
   AssertEqualOptions,
   AsyncAction,
   BotNode,
@@ -60,6 +61,7 @@ export {
   ButtonUrlWebviewType,
   ComparisonActionType,
   ComparisonType,
+  DateDisplay,
   DateInput,
   DateOutput,
   FallbackType,

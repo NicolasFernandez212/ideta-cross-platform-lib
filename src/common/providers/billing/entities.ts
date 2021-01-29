@@ -1,4 +1,3 @@
-import { PlanNameConvention } from './constants';
 import { PlanInfos } from './interfaces';
 import { PlanId, PlanName } from './types';
 
@@ -170,3 +169,11 @@ export class BotBilling {
     this.plans[planId].periods = this.plans[planId].periods || [];
   }
 }
+
+// C - D
+export const PlanNameConvention: { [key in PlanId]: PlanName } = {
+  free: 'Free',
+  starter: 'Starter',
+  starter_AI: 'Starter AI',
+  professional: 'Professional',
+};

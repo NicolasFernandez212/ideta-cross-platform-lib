@@ -1,18 +1,10 @@
 import { BillingPlan } from './entities';
-import { PlanId, PlanName } from './types';
 
 export const AddonsPriceConvention = {
   contributor: 50,
   additional_users: 20,
   support: 30,
   white_label: 20,
-};
-
-export const PlanNameConvention: { [key in PlanId]: PlanName } = {
-  free: 'Free',
-  starter: 'Starter',
-  starter_AI: 'Starter AI',
-  professional: 'Professional',
 };
 
 export const Plans = [

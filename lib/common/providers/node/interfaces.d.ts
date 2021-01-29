@@ -1,4 +1,4 @@
-import { BodyType, ButtonElement, ButtonLoginService, ButtonUrlWebviewType, ComparisonActionType, ComparisonType, DateInput, DateOutput, FallbackType, FormatCheckType, MappingType, MediaType, OperationOptions, OperationType, OptionBehaviorType, QuickReplyContentType, RequestType, TemplateCarrousel, TemplateList, TemplateQuickReplies, TemplateType } from './types';
+import { BodyType, ButtonElement, ButtonLoginService, ButtonUrlWebviewType, ComparisonActionType, ComparisonType, DateDisplay, DateInput, DateOutput, FallbackType, FormatCheckType, MappingType, MediaType, OperationOptions, OperationType, OptionBehaviorType, QuickReplyContentType, RequestType, TemplateCarrousel, TemplateList, TemplateQuickReplies, TemplateType } from './types';
 import { NlpService } from '../bot/types';
 export interface BotNode {
     key: string;
@@ -214,6 +214,7 @@ export interface SaveDataOptions {
         targetNode?: string;
         formatCheck?: FormatCheckType;
         customFormat?: string;
+        dateDisplay?: DateDisplay;
         dateInput?: DateInput;
         dateOutput?: DateOutput;
         targetNodeIfCheckFails?: string;

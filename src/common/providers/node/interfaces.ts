@@ -5,6 +5,7 @@ import {
   ButtonUrlWebviewType,
   ComparisonActionType,
   ComparisonType,
+  DateDisplay,
   DateInput,
   DateOutput,
   FallbackType,
@@ -307,6 +308,7 @@ export interface SaveDataOptions {
     targetNode?: string;
     formatCheck?: FormatCheckType;
     customFormat?: string;
+    dateDisplay?: DateDisplay;
     dateInput?: DateInput;
     dateOutput?: DateOutput;
     targetNodeIfCheckFails?: string;
@@ -374,7 +376,7 @@ export interface SendToExternalApiOptions {
   };
 }
 
-interface ApiData {
+export interface ApiData {
   active?: boolean;
   arrayPath?: string;
   key?: string;

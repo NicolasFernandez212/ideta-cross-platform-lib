@@ -43,3 +43,6 @@ export declare class BotBilling {
     switchPlan(previous: PlanId, current: PlanId): Promise<void>;
     private registerPlanDefaults;
 }
+export declare const PlanNameConvention: {
+    [key in PlanId]: PlanName;
+};

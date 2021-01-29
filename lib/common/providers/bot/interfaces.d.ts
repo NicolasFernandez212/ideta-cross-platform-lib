@@ -156,7 +156,9 @@ export interface VocalOption extends DisplayOption {
     active: boolean;
     key: 'vocal';
     values: {
-        seechToText: boolean;
+        speechToText: boolean;
+        autoSend: boolean;
+        autoSendDelay: number;
         textToSpeech: boolean;
         autoTextToSpeech: boolean;
         toggleAutoTextToSpeech: boolean;
@@ -201,7 +203,7 @@ export interface DataTransferOrders {
 }
 export interface DataTransferOrder {
     id: string;
-    sourceType: 'cookie' | 'variable';
+    sourceType: 'cookie' | 'variable' | 'localStorage';
     source: string;
     target: string;
 }
