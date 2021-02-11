@@ -1,8 +1,9 @@
-import { Channel, NlpService, OAuthService, NlpServiceStatus, DisplayOptionName, BackgroundType, DataStoreElemKeyType, DataStoreElemArrayType, DataStoreElemType, DataScope, DisplayContext } from './types';
+import { Channel, NlpService, OAuthService, NlpServiceStatus, DisplayOptionName, BackgroundType, DisplayContext } from './types';
 import { BotBilling } from '../billing/entities';
 import { AsyncAction, MappingOptions, NlpOptions } from '../node/interfaces';
 import { ButtonElement, LayoutSize } from '../node/types';
 import { UserRoleObject } from '../user/interfaces';
+import { DataStore } from '../data/interfaces';
 export interface Bot {
     id: string;
     name: string;
@@ -14,11 +15,11 @@ export interface Bot {
     users: {
         [id: string]: UserRoleObject;
     };
-    conversationKeepAlives: ConversationKeepAlive[];
+    conversationKeepAlives?: ConversationKeepAlive[];
     defaultMappingOptions: MappingOptions;
-    dataStore: DataStore;
-    globalIntents: NlpOptions;
-    emailWatermark: EmailWatermark;
+    dataStore?: DataStore;
+    globalIntents?: NlpOptions;
+    emailWatermark?: EmailWatermark;
     channels?: {
         [channel in Channel]: ChannelInfos;
     };
@@ -248,42 +249,6 @@ export interface FacebookPageInfos {
             url: string;
         };
     };
-}
-export interface DataStore {
-    [key: string]: DataStoreElem;
-}
-export interface DataStoreElemKeys {
-    [key: string]: DataStoreElemKey;
-}
-export interface DataStoreElemKey {
-    key: string;
-    type: DataStoreElemKeyType;
-}
-export interface DataStoreArrayElems {
-    length: DataStoreElemKey;
-    type: DataStoreElemArrayType;
-    keys?: DataStoreElemKeys;
-}
-export interface DataAsyncAction {
-    trigger: 'update' | 'write';
-    action: AsyncAction;
-}
-export interface DataStoreElem {
-    id?: string;
-    key?: string;
-    type?: DataStoreElemType;
-    scope?: DataScope;
-    desc?: string;
-    value?: DataStoreElemKeyType;
-    init?: any;
-    isSupportKey?: boolean;
-    isTemplateKey?: boolean;
-    minimum?: number;
-    keys?: DataStoreElemKeys;
-    elements?: DataStoreArrayElems;
-    actions?: DataAsyncAction[];
-    editable?: boolean;
-    keepValue?: boolean;
 }
 export interface LayoutOptions {
     framed: boolean;

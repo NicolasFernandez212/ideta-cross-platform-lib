@@ -1,4 +1,4 @@
-import { Granularity } from './types';
+import { CollectionName, Granularity } from './types';
 import { Channel } from '../bot/types';
 
 export interface BotSummary {
@@ -23,3 +23,13 @@ export interface DataKeySplit {
   share: number;
   length: number;
 }
+
+export interface QueryAdditionalFilters {
+  startDate?: Date;
+  endDate?: Date;
+  channels?: Channel[];
+  lookUp?: CollectionName;
+}
+
+// C - D
+export type QueryFilters<T> = Partial<T> & QueryAdditionalFilters;

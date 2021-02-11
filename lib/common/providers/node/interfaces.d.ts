@@ -1,5 +1,6 @@
 import { BodyType, ButtonElement, ButtonLoginService, ButtonUrlWebviewType, ComparisonActionType, ComparisonType, DateDisplay, DateInput, DateOutput, FallbackType, FormatCheckType, MappingType, MediaType, OperationOptions, OperationType, OptionBehaviorType, QuickReplyContentType, RequestType, TemplateCarrousel, TemplateList, TemplateQuickReplies, TemplateType } from './types';
 import { NlpService } from '../bot/types';
+import { DataRichSegment } from '../data/interfaces';
 export interface BotNode {
     key: string;
     name: string;
@@ -160,7 +161,7 @@ export interface NodeMapping {
     dataInput?: MappingDataInput;
     goToNode?: MappingGoToNode;
     switch?: MappingSwitch;
-    actions: MappingAsyncAction[];
+    actions?: MappingAsyncAction[];
     options: MappingOptions;
 }
 export interface MappingDataInput {
@@ -267,7 +268,7 @@ export interface SendToExternalApiOptions {
         bodyType?: BodyType;
     };
 }
-interface ApiData {
+export interface ApiData {
     active?: boolean;
     arrayPath?: string;
     key?: string;
@@ -321,10 +322,6 @@ export interface MappingOptionBehavior {
         url?: string;
     };
 }
-export interface DataRichSegment {
-    type?: 'literal' | 'key' | 'element';
-    value?: string;
-}
 export interface DataOperation {
     type: OperationType;
     key: string;
@@ -361,4 +358,6 @@ export interface DataComparison {
     ifTrue: ComparisonAction;
     ifFalse: ComparisonAction;
 }
-export {};
+export interface BroadcastNode extends BotNode {
+    hasChanged: boolean;
+}

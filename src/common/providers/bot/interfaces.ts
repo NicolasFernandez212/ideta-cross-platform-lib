@@ -5,16 +5,13 @@ import {
   NlpServiceStatus,
   DisplayOptionName,
   BackgroundType,
-  DataStoreElemKeyType,
-  DataStoreElemArrayType,
-  DataStoreElemType,
-  DataScope,
   DisplayContext,
 } from './types';
 import { BotBilling } from '../billing/entities';
 import { AsyncAction, MappingOptions, NlpOptions } from '../node/interfaces';
 import { ButtonElement, LayoutSize } from '../node/types';
 import { UserRoleObject } from '../user/interfaces';
+import { DataStore } from '../data/interfaces';
 
 export interface Bot {
   id: string;
@@ -25,11 +22,11 @@ export interface Bot {
   endPointBack: string;
   nbNodes: number;
   users: { [id: string]: UserRoleObject };
-  conversationKeepAlives: ConversationKeepAlive[];
+  conversationKeepAlives?: ConversationKeepAlive[];
   defaultMappingOptions: MappingOptions;
-  dataStore: DataStore;
-  globalIntents: NlpOptions;
-  emailWatermark: EmailWatermark;
+  dataStore?: DataStore;
+  globalIntents?: NlpOptions;
+  emailWatermark?: EmailWatermark;
   channels?: { [channel in Channel]: ChannelInfos };
   nlpServices?: { [service in NlpService]: NlpServiceInfos };
   oauthServices?: { [service in OAuthService]: OAuthServiceInfos };
@@ -320,54 +317,6 @@ export interface FacebookPageInfos {
       url: string;
     };
   };
-}
-
-export interface DataStore {
-  [key: string]: DataStoreElem;
-}
-
-export interface DataStoreElemKeys {
-  [key: string]: DataStoreElemKey;
-}
-
-export interface DataStoreElemKey {
-  key: string;
-  type: DataStoreElemKeyType;
-}
-
-export interface DataStoreArrayElems {
-  length: DataStoreElemKey;
-  type: DataStoreElemArrayType;
-  // If Data Key elements are Objects
-  keys?: DataStoreElemKeys;
-}
-
-export interface DataAsyncAction {
-  trigger: 'update' | 'write';
-  action: AsyncAction;
-}
-
-export interface DataStoreElem {
-  id?: string;
-  key?: string;
-  type?: DataStoreElemType;
-  scope?: DataScope;
-  desc?: string;
-  // If Data Key is a bot key
-  value?: DataStoreElemKeyType;
-  // If Data Key is a conversation key
-  init?: any;
-  isSupportKey?: boolean;
-  isTemplateKey?: boolean;
-  minimum?: number;
-  // If Data Key is an Object
-  keys?: DataStoreElemKeys;
-  // If Data Key is an Array
-  elements?: DataStoreArrayElems;
-  actions?: DataAsyncAction[];
-  editable?: boolean;
-  // Keep previous bot data values on deploy
-  keepValue?: boolean;
 }
 
 export interface LayoutOptions {

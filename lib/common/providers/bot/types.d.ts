@@ -1,15 +1,8 @@
-export declare type Channel = 'sandbox' | 'web' | 'facebook' | 'google' | 'smooch' | 'workplace' | 'twilio';
+export declare type Channel = 'sandbox' | 'web' | 'facebook' | 'google' | 'slack' | 'smooch' | 'twiliovoice' | 'workplace';
 export declare type NlpService = 'dialogflow' | 'luis';
 export declare type NlpServiceStatus = 'importing' | 'imported' | 'exporting' | 'exported' | 'error';
 export declare type OAuthService = 'google' | 'facebook';
 export declare type AttachmentType = 'image' | 'video' | 'audio' | 'file';
 export declare type DisplayOptionName = 'logo' | 'background' | 'icon' | 'colors' | 'chat' | 'vocal';
 export declare type BackgroundType = 'url' | 'color';
-export declare type DataStoreElemKeyType = 'string' | 'number' | 'boolean';
-export declare type DataStoreElemArrayType = DataStoreElemKeyType | 'object';
-export declare type DataStoreElemType = DataStoreElemArrayType | 'array';
-export declare type AllowedType = DataStoreElemType | 'content' | 'element' | 'array.object' | 'array.string' | 'array.number';
-export declare type RealScope = 'conversation' | 'bot';
-export declare type DataScope = RealScope | 'system';
-export declare type AllowedScope = DataScope | 'identifier';
 export declare type DisplayContext = 'preview' | 'sandbox' | 'web' | 'cockpit' | 'embedded';

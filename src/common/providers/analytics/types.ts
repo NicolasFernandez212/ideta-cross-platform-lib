@@ -6,4 +6,8 @@ export type AggregationStep = string[];
 
 export type Granularity = 'day' | 'week' | 'month' | 'year';
 
-export type TimeSerie = { date: string; value: number; group: string }[];
+export type TimeSeries = { date: string; value: number; group: string }[];
+
+export type TimeSerie = { year: number; month?: number; dayOfMonth?: number; value: number }[];
+
+export type CollectionName = 'conversations' | 'messages';

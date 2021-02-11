@@ -1,2 +1,2 @@
-export { AnalyticsFilters, BotSummary, DataKeySplit } from './providers/analytics/interfaces';
-export { AggregationStep, Granularity, TimeSerie } from './providers/analytics/types';
+export { AnalyticsFilters, BotSummary, DataKeySplit, QueryAdditionalFilters, QueryFilters, } from './providers/analytics/interfaces';
+export { AggregationStep, CollectionName, Granularity, TimeSerie, TimeSeries } from './providers/analytics/types';

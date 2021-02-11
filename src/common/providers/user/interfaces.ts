@@ -12,10 +12,10 @@ export interface User {
   lastname?: string;
   facebook?: FacebookUserInfos;
   status?: UserStatus;
-  customer: {
+  customer?: {
     id: string;
   };
-  settings: any;
+  settings?: any;
 }
 
 export interface UserRoleObject {

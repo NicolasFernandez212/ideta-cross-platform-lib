@@ -28,11 +28,11 @@ export interface LuisCredentials {
     authKey: string;
 }
 export interface DialogflowCredentials {
-    access_token: string;
-    refresh_token: string;
+    access_token?: string;
+    refresh_token?: string;
     private_key?: string;
     client_email?: string;
-    project_id: string;
+    project_id?: string;
 }
 export interface Lexicon {
     intents: any;

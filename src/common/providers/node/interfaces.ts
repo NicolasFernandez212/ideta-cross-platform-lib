@@ -23,6 +23,7 @@ import {
   TemplateType,
 } from './types';
 import { NlpService } from '../bot/types';
+import { DataRichSegment } from '../data/interfaces';
 
 /*
  * node
@@ -247,7 +248,7 @@ export interface NodeMapping {
   dataInput?: MappingDataInput;
   goToNode?: MappingGoToNode;
   switch?: MappingSwitch;
-  actions: MappingAsyncAction[];
+  actions?: MappingAsyncAction[];
   options: MappingOptions;
 }
 
@@ -448,14 +449,6 @@ export interface MappingOptionBehavior {
 }
 
 /*
- * Operations and Comparisons
- */
-export interface DataRichSegment {
-  type?: 'literal' | 'key' | 'element';
-  value?: string;
-}
-
-/*
  * Data Operations
  */
 
@@ -503,4 +496,8 @@ export interface DataComparison {
   comparator?: DataRichSegment;
   ifTrue: ComparisonAction;
   ifFalse: ComparisonAction;
+}
+
+export interface BroadcastNode extends BotNode {
+  hasChanged: boolean;
 }
