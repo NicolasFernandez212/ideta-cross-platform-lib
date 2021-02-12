@@ -151,6 +151,7 @@ export interface ChatOption extends DisplayOption {
         no_branding: boolean;
         layout: LayoutSize;
         nodesLayout: LayoutSize;
+        useNotificationSound: boolean;
     };
 }
 export interface VocalOption extends DisplayOption {
