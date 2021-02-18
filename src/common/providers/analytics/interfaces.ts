@@ -1,6 +1,12 @@
 import { CollectionName, Granularity } from './types';
 import { Channel } from '../bot/types';
 
+/**
+ * Summary of conversation and key data from MongoDB for a bot
+ *
+ * Type : app model
+ * Representation : Front (analytics)
+ */
 export interface BotSummary {
   startDate: Date;
   activeChannels: Channel[];
@@ -8,7 +14,10 @@ export interface BotSummary {
 }
 
 /**
- * Those are the "global" filters, that can be set from the Filters panel
+ * Analytics filters that can by applied to retrieve conversation data
+ *
+ * Type : app model
+ * Representation : Front (analytics)
  */
 export interface AnalyticsFilters {
   channels: Channel[];
@@ -17,13 +26,12 @@ export interface AnalyticsFilters {
   endDate?: Date;
 }
 
-export interface DataKeySplit {
-  value: string | number;
-  count: number;
-  share: number;
-  length: number;
-}
-
+/**
+ * Additional analytics filters that can by applied to retrieve conversation data
+ *
+ * Type : app model
+ * Representation : Front (analytics)
+ */
 export interface QueryAdditionalFilters {
   startDate?: Date;
   endDate?: Date;
@@ -33,3 +41,16 @@ export interface QueryAdditionalFilters {
 
 // C - D
 export type QueryFilters<T> = Partial<T> & QueryAdditionalFilters;
+
+/**
+ * Analytics filters that can by applied to retrieve dataKey data
+ *
+ * Type : app model
+ * Representation : Front (analytics)
+ */
+export interface DataKeySplit {
+  value: string | number;
+  count: number;
+  share: number;
+  length: number;
+}

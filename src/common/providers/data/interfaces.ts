@@ -1,29 +1,14 @@
 import { AsyncAction } from '../node/interfaces';
 import { DataScope, DataStoreElemArrayType, DataStoreElemKeyType, DataStoreElemType } from './types';
 
+/**
+ * Data store model
+ *
+ * Type : DB model (data-stores/{botId}/{channel})
+ * Representation : Front, Back, CF
+ */
 export interface DataStore {
   [key: string]: DataStoreElem;
-}
-
-export interface DataStoreElemKeys {
-  [key: string]: DataStoreElemKey;
-}
-
-export interface DataStoreElemKey {
-  key: string;
-  type: DataStoreElemKeyType;
-}
-
-export interface DataStoreArrayElems {
-  length: DataStoreElemKey;
-  type: DataStoreElemArrayType;
-  // If Data Key elements are Objects
-  keys?: DataStoreElemKeys;
-}
-
-export interface DataAsyncAction {
-  trigger: 'update' | 'write';
-  action: AsyncAction;
 }
 
 export interface DataStoreElem {
@@ -47,6 +32,33 @@ export interface DataStoreElem {
   editable?: boolean;
   // Keep previous bot data values on deploy
   keepValue?: boolean;
+}
+
+/**
+ * Object keys properties model
+ *
+ * Type : DB model (data-stores/{botId}/{channel}/{keyId}/keys)
+ * Representation : Front, Back, CF
+ */
+export interface DataStoreElemKeys {
+  [key: string]: DataStoreElemKey;
+}
+
+export interface DataStoreElemKey {
+  key: string;
+  type: DataStoreElemKeyType;
+}
+
+export interface DataStoreArrayElems {
+  length: DataStoreElemKey;
+  type: DataStoreElemArrayType;
+  // If Data Key elements are Objects
+  keys?: DataStoreElemKeys;
+}
+
+export interface DataAsyncAction {
+  trigger: 'update' | 'write';
+  action: AsyncAction;
 }
 
 /*

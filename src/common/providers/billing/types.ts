@@ -1,3 +1,13 @@
-export type PlanId = "free" | "starter" | "starter_AI" | "professional";
+/**
+ * All existing plans id
+ *
+ * Representation : Front, CF
+ */
+export type PlanId = 'free' | 'starter' | 'starter_AI' | 'professional';
 
-export type PlanName = "Free" | "Starter" | "Starter AI" | "Professional";
+/**
+ * All existing plan names
+ *
+ * Representation : Front, CF
+ */
+export type PlanName = 'Free' | 'Starter' | 'Starter AI' | 'Professional';

@@ -1,6 +1,25 @@
 import { PlanInfos } from './interfaces';
 import { PlanId, PlanName } from './types';
 
+/**
+ * Names convention for each plan ID
+ *
+ * Representation : Front, CF
+ */
+// Circular Depency
+export const PlanNameConvention: { [key in PlanId]: PlanName } = {
+  free: 'Free',
+  starter: 'Starter',
+  starter_AI: 'Starter AI',
+  professional: 'Professional'
+};
+
+/**
+ * Addons used in a specific bot
+ *
+ * Type : DB model (bots/{botId}/billing/addons)
+ * Representation : Front, CF
+ */
 export class BotBillingAddons {
   public contributor: number;
   public additional_users: number;
@@ -15,6 +34,12 @@ export class BotBillingAddons {
   }
 }
 
+/**
+ * Model of options of a plan
+ *
+ * Type : DB model (bots/{botId}/billing/options)
+ * Representation : Front, CF
+ */
 export class BotBillingOptions {
   public deployments: number;
   public users: number;
@@ -38,6 +63,14 @@ export class BotBillingOptions {
     this.broadcast_access = options.broadcast_access || false;
   }
 
+  /**
+   * Update a specific option value
+   *
+   * Called in : Front, CF
+   *
+   * @param option - target option to update
+   * @param value - new value of target option
+   */
   public updateOption(option: keyof BotBillingOptions, value: number | boolean) {
     if (typeof this[option] !== typeof value) return;
 
@@ -73,6 +106,87 @@ export class BotBillingOptions {
   }
 }
 
+/**
+ * Complete model of billing infos in bot
+ * including BotBillingOptions, BotBillingAddons, and other infos
+ * such as subscription date
+ *
+ * Type : DB model (bots/{botId}/billing)
+ * Representation : Front, CF
+ */
+export class BotBilling {
+  public activePlan: PlanId;
+  public plan_period_start: number;
+  public plans: { [plan in PlanId]?: PlanInfos };
+  public options: BotBillingOptions;
+  public addons: BotBillingAddons;
+  public enable_downgrade: 'none' | 'no_free' | 'all';
+
+  constructor(infos: Partial<BotBilling>) {
+    this.activePlan = infos.activePlan || 'free';
+    this.plan_period_start = Date.now();
+    this.plans = infos.plans || {};
+    this.options = new BotBillingOptions(infos.options || {});
+    this.addons = new BotBillingAddons(infos.addons || {});
+    this.enable_downgrade = infos.enable_downgrade || 'none';
+  }
+
+  /**
+   * Switch from a plan to another in a bot
+   *
+   * Called in : CF
+   *
+   * @param previous - previous plan
+   * @param current - target plan
+   */
+  public switchPlan(previous: PlanId, current: PlanId): Promise<void> {
+    return new Promise((resolve) => {
+      this.registerPlanDefaults(previous);
+      this.registerPlanDefaults(current);
+
+      const previousPlan = this.plans[previous];
+      const currentPlan = this.plans[current];
+
+      previousPlan.periods.push({
+        start: this.plan_period_start,
+        end: Date.now()
+      });
+      previousPlan.active_trial = false;
+      previousPlan.expired_trial = true; // cannot try this plan again
+
+      this.activePlan = current;
+      this.plan_period_start = Date.now();
+      // activate trial if not already expired
+      currentPlan.active_trial = !currentPlan.expired_trial;
+
+      resolve();
+    });
+  }
+
+  /**
+   * Set default plan subscription infos for a newly subscribed plan
+   *
+   * Called in : CF
+   *
+   * @param planId - plan for which to register defaults
+   */
+  private registerPlanDefaults(planId: PlanId): void {
+    this.plans[planId] = this.plans[planId] || {};
+    this.plans[planId].active_trial = this.plans[planId].active_trial || null;
+    this.plans[planId].expired_trial = this.plans[planId].expired_trial || null;
+    this.plans[planId].id = this.plans[planId].id || planId;
+    this.plans[planId].name = this.plans[planId].name || PlanNameConvention[planId];
+    this.plans[planId].periods = this.plans[planId].periods || [];
+  }
+}
+
+/**
+ * Complete model of a plan
+ * Used to handle plans computation in the app
+ *
+ * Type : app model
+ * Representation : Front, CF
+ */
 export class BillingPlan extends BotBillingOptions {
   public name: PlanName;
   public id: PlanId;
@@ -89,15 +203,30 @@ export class BillingPlan extends BotBillingOptions {
     this.rate = plan.rate || 0;
   }
 
-  /*
-   * returns TRUE if the compared plan can replace the current one
+  /**
+   * Test if a passed plan outperforms the current one
+   * e.g. if the user has enabled a setting inducing a plan upgrade
+   *
+   * Called in : Front, CF
+   *
+   * @param previous - previous active plan to check if we compare the same
+   * @param enable_downgrade - enable a plan downgrade if the compared plan is below the current one
+   *
+   * @returns - TRUE if the compared plan outperforms the current one
    */
   public isReplacing(previous: PlanId, enable_downgrade?: boolean): boolean {
     return previous !== this.id && (enable_downgrade || this.outperforms.indexOf(previous) > -1);
   }
 
-  /*
-   * returns TRUE if the compared plan is matches the current instance
+  /**
+   * Compare some options with the current ones
+   *
+   * Called in : Front, CF
+   *
+   * @param options - options to compare
+   * @param skip_free - skip comparison is current plan is 'free'
+   *
+   * @returns - TRUE if the passed options are greater than the current ones
    */
   public compare(options: BotBillingOptions, skip_free?: boolean): boolean {
     if (this.is_free_plan && skip_free) {
@@ -116,64 +245,3 @@ export class BillingPlan extends BotBillingOptions {
     );
   }
 }
-
-export class BotBilling {
-  public activePlan: PlanId;
-  public plan_period_start: number;
-  public plans: { [plan in PlanId]?: PlanInfos };
-  public options: BotBillingOptions;
-  public addons: BotBillingAddons;
-  public enable_downgrade: 'none' | 'no_free' | 'all';
-
-  constructor(infos: Partial<BotBilling>) {
-    this.activePlan = infos.activePlan || 'free';
-    this.plan_period_start = Date.now();
-    this.plans = infos.plans || {};
-    this.options = new BotBillingOptions(infos.options || {});
-    this.addons = new BotBillingAddons(infos.addons || {});
-    this.enable_downgrade = infos.enable_downgrade || 'none';
-  }
-
-  // Not used in Front
-  public switchPlan(previous: PlanId, current: PlanId): Promise<void> {
-    return new Promise((resolve) => {
-      this.registerPlanDefaults(previous);
-      this.registerPlanDefaults(current);
-
-      const previousPlan = this.plans[previous];
-      const currentPlan = this.plans[current];
-
-      previousPlan.periods.push({
-        start: this.plan_period_start,
-        end: Date.now(),
-      });
-      previousPlan.active_trial = false;
-      previousPlan.expired_trial = true; // cannot try this plan again
-
-      this.activePlan = current;
-      this.plan_period_start = Date.now();
-      // activate trial if not already expired
-      currentPlan.active_trial = !currentPlan.expired_trial;
-
-      resolve();
-    });
-  }
-
-  // Not used in Front
-  private registerPlanDefaults(planId: PlanId): void {
-    this.plans[planId] = this.plans[planId] || {};
-    this.plans[planId].active_trial = this.plans[planId].active_trial || null;
-    this.plans[planId].expired_trial = this.plans[planId].expired_trial || null;
-    this.plans[planId].id = this.plans[planId].id || planId;
-    this.plans[planId].name = this.plans[planId].name || PlanNameConvention[planId];
-    this.plans[planId].periods = this.plans[planId].periods || [];
-  }
-}
-
-// C - D
-export const PlanNameConvention: { [key in PlanId]: PlanName } = {
-  free: 'Free',
-  starter: 'Starter',
-  starter_AI: 'Starter AI',
-  professional: 'Professional',
-};

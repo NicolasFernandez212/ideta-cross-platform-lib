@@ -1,12 +1,26 @@
 import { BillingPlan } from './entities';
 
+/**
+ * Prices convention for each existing plan
+ * Note : update here if plans prices must change
+ *
+ * Type : app model
+ * Representation : Front, CF
+ */
 export const AddonsPriceConvention = {
   contributor: 50,
   additional_users: 20,
   support: 30,
-  white_label: 20,
+  white_label: 20
 };
 
+/**
+ * List of existing plans and their settings
+ * Note : update here if plans settings must change
+ *
+ * Type : app model
+ * Representation : Front, CF
+ */
 export const Plans = [
   new BillingPlan({
     name: 'Free',
@@ -22,7 +36,7 @@ export const Plans = [
     stripe_connection: true,
     analytics_access: true,
     support_access: true,
-    broadcast_access: true,
+    broadcast_access: true
   }),
 
   new BillingPlan({
@@ -38,7 +52,7 @@ export const Plans = [
     stripe_connection: false,
     analytics_access: true,
     support_access: false,
-    broadcast_access: true,
+    broadcast_access: true
   }),
 
   new BillingPlan({
@@ -54,7 +68,7 @@ export const Plans = [
     stripe_connection: false,
     analytics_access: true,
     support_access: true,
-    broadcast_access: true,
+    broadcast_access: true
   }),
 
   new BillingPlan({
@@ -70,6 +84,6 @@ export const Plans = [
     stripe_connection: true,
     analytics_access: true,
     support_access: true,
-    broadcast_access: true,
-  }),
+    broadcast_access: true
+  })
 ];
