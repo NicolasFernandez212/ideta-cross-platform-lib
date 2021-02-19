@@ -7,11 +7,14 @@ import {
   BackgroundType,
   DisplayContext
 } from './types';
+
 import { BotBilling } from '../billing/entities';
-import { AsyncAction, MappingOptions, NlpOptions } from '../node/interfaces';
-import { ButtonElement, LayoutSize } from '../node/types';
+import { AsyncAction, MappingOptions } from '../node/interfaces';
 import { UserRoleObject } from '../user/interfaces';
 import { DataStore } from '../data/interfaces';
+import { NlpOptions } from '../node/node-mapping/interfaces';
+import { LayoutSize } from '../node/node-template/types';
+import { ButtonElement } from '../node/node-template/interfaces';
 
 /**
  * Bot model
@@ -70,6 +73,7 @@ export interface NlpServiceInfos {
 export interface OAuthServiceInfos {
   clientId: string;
   clientSecret: string;
+  isAvailable?: boolean;
 }
 
 /**

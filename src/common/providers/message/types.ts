@@ -4,9 +4,9 @@ import {
   TemplateOpenGraph,
   TemplateQuickRepliesManual,
   TemplateReceipt,
-  TemplateText,
-} from '../node/interfaces';
-import { TemplateCarrouselManual, TemplateListManual } from '../node/types';
+  TemplateText
+} from '../node/node-template/interfaces';
+import { TemplateCarrouselManual, TemplateListManual } from '../node/node-template/types';
 
 export type MessageTemplate =
   | MessageTemplateText

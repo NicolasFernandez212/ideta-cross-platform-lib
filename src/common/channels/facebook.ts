@@ -9,6 +9,6 @@ export {
   ProfileGreeting,
   ProfileHomeUrl,
   ProfilePersistentMenu,
-  Property,
+  Property
 } from '../providers/channels/facebook/interfaces';
 export { MessengerProfileKey } from '../providers/channels/facebook/types';

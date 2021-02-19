@@ -34,6 +34,7 @@ export declare type AllowedType = DataStoreElemType | 'content' | 'element' | 'a
 export declare type RealScope = 'conversation' | 'bot';
 /**
  * ...See DataScope description
+ *
  * - 'system' is a ghost scope representing conversation data keys that cannot be deleted or edited
  * (these are pre-declared keys that carry metadata of the conversation)
  *

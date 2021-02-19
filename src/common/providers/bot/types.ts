@@ -8,6 +8,13 @@ import { DisplayOptions } from './interfaces';
 export type Channel = 'sandbox' | 'web' | 'facebook' | 'google' | 'slack' | 'smooch' | 'twiliovoice' | 'workplace';
 
 /**
+ * All channels that can be deployed
+ *
+ * Representation : Front, Back, CF
+ */
+export type DeployableChannel = Exclude<Channel, 'sandbox'>;
+
+/**
  * All NLP services currently available in app
  *
  * Representation : Front, Back, CF
@@ -23,6 +30,7 @@ export type NlpServiceStatus = 'importing' | 'imported' | 'exporting' | 'exporte
 
 /**
  * All Oauth services currently available in app
+ * !! Must be updated along with ButtonLoginService type
  *
  * Representation : Front, Back, CF
  */

@@ -1,5 +1,5 @@
-import { AsyncAction } from '../node/interfaces';
 import { DataScope, DataStoreElemArrayType, DataStoreElemKeyType, DataStoreElemType } from './types';
+import { AsyncAction } from '../node/interfaces';
 /**
  * Data store model
  *

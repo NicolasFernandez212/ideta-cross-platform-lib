@@ -37,6 +37,7 @@ export type RealScope = 'conversation' | 'bot';
 
 /**
  * ...See DataScope description
+ * 
  * - 'system' is a ghost scope representing conversation data keys that cannot be deleted or edited
  * (these are pre-declared keys that carry metadata of the conversation)
  *
@@ -46,10 +47,10 @@ export type DataScope = RealScope | 'system';
 
 /*
  * ...See RealScope and DataScope description
- 
+ *
  * -- Note about scopes this type's content --
  * AllowedScope is a child of DataScope and declare additional 'ghosts' scopes to handle specific cases :
- * 
+ *
  * - 'identifier' : allows edition of 'first_name' and 'last_name' keys (which are system scope keys)
  *
  * Representation : Front

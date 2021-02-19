@@ -38,3 +38,4 @@ export type TimeSerie = { year: number; month?: number; dayOfMonth?: number; val
  * Representation : Back (analytics)
  */
 export type CollectionName = 'conversations' | 'messages';
+

@@ -1,6 +1,7 @@
 import { MessageTemplate } from './types';
+
 import { Actor } from '../conversation/interfaces';
-import { MappingDataInput } from '../node/interfaces';
+import { MappingDataInput } from '../node/node-mapping/interfaces';
 
 export interface Message {
   id: string;

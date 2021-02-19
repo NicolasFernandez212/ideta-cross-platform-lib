@@ -1,5 +1,6 @@
-import { AsyncAction } from '../node/interfaces';
 import { DataScope, DataStoreElemArrayType, DataStoreElemKeyType, DataStoreElemType } from './types';
+
+import { AsyncAction } from '../node/interfaces';
 
 /**
  * Data store model
@@ -17,9 +18,9 @@ export interface DataStoreElem {
   type?: DataStoreElemType;
   scope?: DataScope;
   desc?: string;
-  // If Data Key is a bot key
+  // If Data Key is a primitive bot key
   value?: DataStoreElemKeyType;
-  // If Data Key is a conversation key
+  // If Data Key is a primitive conversation key
   init?: any;
   isSupportKey?: boolean;
   isTemplateKey?: boolean;

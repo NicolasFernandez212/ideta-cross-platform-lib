@@ -31,6 +31,8 @@ export interface LuisCredentials {
   appId: string;
   appVersion: string;
   authKey: string;
+  endpointKey: string;
+  useAuthAsEndpointKey: boolean;
 }
 
 export interface DialogflowCredentials {

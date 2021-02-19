@@ -1,4 +1,5 @@
 import { CollectionName, Granularity } from './types';
+
 import { Channel } from '../bot/types';
 
 /**

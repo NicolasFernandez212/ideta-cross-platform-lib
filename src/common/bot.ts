@@ -21,6 +21,7 @@ export {
   NlpServiceInfos,
   OAuthServiceInfos,
   ShareInfos,
+  SlackInfos,
   SlackAppInfos,
   SlackTeam,
   SmoochChannelInfos,
@@ -34,15 +35,16 @@ export {
   WebParam,
   WebParams,
   WorkplaceAppInfos,
-  WorkplaceChannelInfos,
+  WorkplaceChannelInfos
 } from './providers/bot/interfaces';
 export {
   AttachmentType,
   BackgroundType,
   Channel,
+  DeployableChannel,
   DisplayContext,
   DisplayOptionName,
   NlpService,
   NlpServiceStatus,
-  OAuthService,
+  OAuthService
 } from './providers/bot/types';
