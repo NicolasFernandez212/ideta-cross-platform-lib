@@ -1,3 +1,5 @@
+import { Attachment, MediaAttachmentType } from './types';
+
 /**
  * @deprecated
  */
@@ -13,6 +15,14 @@ export interface LocationAttachment {
 }
 
 export interface MediaAttachment {
-  type: 'image' | 'video' | 'audio' | 'file';
+  type: MediaAttachmentType;
   url: string;
+}
+
+export interface SendMessagePayload {
+  type: 'node' | 'text' | 'attachments';
+  id?: string; // If 'node' type
+  text?: string; // If 'text' type
+  attachments?: Attachment[]; // If 'attachments' type
+  // TODO: Find the format in the front
 }

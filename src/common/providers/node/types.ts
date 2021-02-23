@@ -1,6 +1,4 @@
-import { DataBoundedOperationOptions, DataComposedOperationOptions, DataSearchOperationOptions } from './interfaces';
-
-export type OptionBehaviorType = 'message' | 'api';
+import { DataBoundedOperationOptions, DataComposedOperationOptions, DataSearchOperationOptions } from './entities';
 
 export type OperationType =
   // general operations

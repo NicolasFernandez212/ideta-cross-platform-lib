@@ -1,21 +1,4 @@
-import { AvailableLang, UserRole, UserStatus } from './types';
-export interface User {
-    id: string;
-    lang: AvailableLang;
-    bots: {
-        [botId: string]: UserRoleObject;
-    };
-    email: string;
-    avatarUrl?: string;
-    firstname?: string;
-    lastname?: string;
-    facebook?: FacebookUserInfos;
-    status?: UserStatus;
-    customer?: {
-        id: string;
-    };
-    settings?: any;
-}
+import { UserRole } from './types';
 export interface UserRoleObject {
     id: string;
     role: UserRole;

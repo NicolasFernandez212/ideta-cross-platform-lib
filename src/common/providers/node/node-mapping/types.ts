@@ -13,3 +13,7 @@ export type FallbackType = 'go-to-node' | 'message' | 'ai';
 export type RequestType = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
 export type BodyType = 'XML' | 'JSON' | 'TEXT';
+
+export type MappingActionTrigger = 'enter' | 'leave';
+
+export type OptionBehaviorType = 'message' | 'api';

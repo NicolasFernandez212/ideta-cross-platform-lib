@@ -1,20 +1,14 @@
-import {
-  Channel,
-  NlpService,
-  OAuthService,
-  NlpServiceStatus,
-  DisplayOptionName,
-  BackgroundType,
-  DisplayContext
-} from './types';
+import { Channel, OAuthService, NlpServiceStatus, DisplayOptionName, BackgroundType, DisplayContext } from './types';
 
 import { BotBilling } from '../billing/entities';
-import { AsyncAction, MappingOptions } from '../node/interfaces';
 import { UserRoleObject } from '../user/interfaces';
-import { DataStore } from '../data/interfaces';
-import { NlpOptions } from '../node/node-mapping/interfaces';
 import { LayoutSize } from '../node/node-template/types';
-import { ButtonElement } from '../node/node-template/interfaces';
+import { DataStore } from '../data/entities';
+import { ConversationKeepAlive } from '../conversation-session/interfaces';
+import { NlpOptions } from '../lexicon/entities';
+import { NlpService } from '../lexicon/types';
+import { ButtonElement } from '../node/node-template/entities';
+import { MappingOptions } from '../node/node-mapping/entities';
 
 /**
  * Bot model
@@ -33,6 +27,7 @@ export interface Bot {
   users: { [id: string]: UserRoleObject };
   conversationKeepAlives?: ConversationKeepAlive[];
   defaultMappingOptions: MappingOptions;
+  // Deprecated (use data-stores/ collection instead)
   dataStore?: DataStore;
   globalIntents?: NlpOptions;
   // The email watermark form is displayed only if this property exists in DB
@@ -74,18 +69,6 @@ export interface OAuthServiceInfos {
   clientId: string;
   clientSecret: string;
   isAvailable?: boolean;
-}
-
-/**
- * Conversation keep alive model
- *
- * Type : DB model (bots/{botId}/oauthServices/{service})
- * Representation : Front, Back, CF
- */
-export interface ConversationKeepAlive {
-  delay: number; // Time in minutes
-  message: string;
-  backgroundActions: AsyncAction[];
 }
 
 /**

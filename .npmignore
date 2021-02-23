@@ -1,7 +1,8 @@
 src
 
-.prettierrc
 tsconfig.json
+
+.prettierrc
 tslint.json
 
 package-lock.json

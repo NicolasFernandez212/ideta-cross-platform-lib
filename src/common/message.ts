@@ -1,4 +1,4 @@
-export { Message } from './providers/message/interfaces';
+export { Message } from './providers/message/entities';
 export {
   MessageTemplate,
   MessageTemplateButtons,
@@ -8,5 +8,5 @@ export {
   MessageTemplateOpenGraph,
   MessageTemplateQuickReplies,
   MessageTemplateReceipt,
-  MessageTemplateText,
+  MessageTemplateText
 } from './providers/message/types';

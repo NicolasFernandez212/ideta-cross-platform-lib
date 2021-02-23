@@ -1,20 +1,5 @@
-import { BodyType, DateDisplay, DateInput, DateOutput, FallbackType, FormatCheckType, MappingType, RequestType } from './types';
-import { DataComparison, DataOperation, MappingAsyncAction, MappingOptions } from '../interfaces';
-import { NlpService } from '../../bot/types';
-export interface NodeMapping {
-    type: MappingType;
-    dataInput?: MappingDataInput;
-    goToNode?: MappingGoToNode;
-    switch?: MappingSwitch;
-    actions?: MappingAsyncAction[];
-    options: MappingOptions;
-}
-export interface MappingDataInput {
-    triggers: TriggersOptions;
-    nlp: NlpOptions;
-    saveData: SaveDataOptions;
-    fallback: FallbackOptions;
-}
+import { BodyType, DateDisplay, DateInput, DateOutput, FallbackType, FormatCheckType, OptionBehaviorType, RequestType } from './types';
+import { DataComparison, DataOperation } from '../entities';
 export interface TriggersOptions {
     active: boolean;
     options?: Trigger[];
@@ -22,14 +7,6 @@ export interface TriggersOptions {
 export interface Trigger {
     value: string;
     targetNode: string;
-}
-export interface NlpOptions {
-    active: boolean;
-    options?: {
-        service: NlpService;
-        intents: NlpTrigger[];
-        storage: SaveNlpOptions;
-    };
 }
 export interface SaveNlpOptions {
     active: boolean;
@@ -55,16 +32,17 @@ export interface NlpTrigger {
 }
 export interface SaveDataOptions {
     active: boolean;
-    options?: {
-        key?: string;
-        targetNode?: string;
-        formatCheck?: FormatCheckType;
-        customFormat?: string;
-        dateDisplay?: DateDisplay;
-        dateInput?: DateInput;
-        dateOutput?: DateOutput;
-        targetNodeIfCheckFails?: string;
-    };
+    options?: SaveDataOptionsSettings;
+}
+export interface SaveDataOptionsSettings {
+    key?: string;
+    targetNode?: string;
+    formatCheck?: FormatCheckType;
+    customFormat?: string;
+    dateDisplay?: DateDisplay;
+    dateInput?: DateInput;
+    dateOutput?: DateOutput;
+    targetNodeIfCheckFails?: string;
 }
 export interface FallbackOptions {
     active: boolean;
@@ -74,19 +52,6 @@ export interface FallbackOptions {
         message?: string;
         url?: string;
     };
-}
-export interface MappingGoToNode {
-    active: boolean;
-    options?: {
-        targetNode?: string;
-        waitForInput?: boolean;
-        operations?: DataOperation[];
-    };
-}
-export interface MappingSwitch {
-    assertEqual: AssertEqualOptions;
-    performOperations: PerformOperationsOptions;
-    sendToExternalApi: SendToExternalApiOptions;
 }
 export interface AssertEqualOptions {
     active: boolean;
@@ -104,13 +69,14 @@ export interface SendToExternalApiOptions {
     options?: {
         headers?: string;
         body?: string;
+        bodyType?: BodyType;
         data?: ApiData;
         fallbackNode?: string;
+        isJSON?: boolean;
         method?: RequestType;
         targetNode?: string;
         timeout?: number;
         url?: string;
-        bodyType?: BodyType;
     };
 }
 export interface ApiData {
@@ -119,4 +85,13 @@ export interface ApiData {
     key?: string;
     mapping?: any;
     type?: 'object' | 'array';
+}
+export interface MappingOptionBehavior {
+    active: boolean;
+    options?: {
+        type?: OptionBehaviorType;
+        message?: string;
+        targetNode?: string;
+        url?: string;
+    };
 }

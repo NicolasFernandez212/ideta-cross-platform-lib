@@ -5,7 +5,6 @@ export {
   ChannelInfos,
   ChatOption,
   ColorsOption,
-  ConversationKeepAlive,
   DataTransferOrder,
   DataTransferOrders,
   DisplayOption,
@@ -44,7 +43,6 @@ export {
   DeployableChannel,
   DisplayContext,
   DisplayOptionName,
-  NlpService,
   NlpServiceStatus,
   OAuthService
 } from './providers/bot/types';

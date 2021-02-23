@@ -1,16 +1,7 @@
 import { DataScope, DataStoreElemArrayType, DataStoreElemKeyType, DataStoreElemType } from './types';
 
-import { AsyncAction } from '../node/interfaces';
+import { AsyncAction } from '../node/node-mapping/entities';
 
-/**
- * Data store model
- *
- * Type : DB model (data-stores/{botId}/{channel})
- * Representation : Front, Back, CF
- */
-export interface DataStore {
-  [key: string]: DataStoreElem;
-}
 
 export interface DataStoreElem {
   id?: string;

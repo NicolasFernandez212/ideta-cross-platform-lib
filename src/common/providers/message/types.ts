@@ -2,11 +2,14 @@ import {
   TemplateButtons,
   TemplateMedia,
   TemplateOpenGraph,
-  TemplateQuickRepliesManual,
   TemplateReceipt,
   TemplateText
+} from '../node/node-template/entities';
+import {
+  TemplateCarrouselManual,
+  TemplateListManual,
+  TemplateQuickRepliesManual
 } from '../node/node-template/interfaces';
-import { TemplateCarrouselManual, TemplateListManual } from '../node/node-template/types';
 
 export type MessageTemplate =
   | MessageTemplateText

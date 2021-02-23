@@ -1,3 +1,4 @@
+import { Attachment, MediaAttachmentType } from './types';
 /**
  * @deprecated
  */
@@ -11,6 +12,12 @@ export interface LocationAttachment {
     longitude: number;
 }
 export interface MediaAttachment {
-    type: 'image' | 'video' | 'audio' | 'file';
+    type: MediaAttachmentType;
     url: string;
+}
+export interface SendMessagePayload {
+    type: 'node' | 'text' | 'attachments';
+    id?: string;
+    text?: string;
+    attachments?: Attachment[];
 }

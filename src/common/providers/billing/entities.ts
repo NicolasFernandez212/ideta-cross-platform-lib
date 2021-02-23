@@ -27,12 +27,10 @@ export class BotBillingAddons {
   public white_label: boolean;
 
   constructor(addons: Partial<BotBillingAddons>) {
-    if (addons) {
-      this.contributor = addons.contributor || 0;
-      this.additional_users = addons.additional_users || 0;
-      this.support = addons.support || 0;
-      this.white_label = addons.white_label || false;
-    }
+    this.contributor = addons.contributor || 0;
+    this.additional_users = addons.additional_users || 0;
+    this.support = addons.support || 0;
+    this.white_label = addons.white_label || false;
   }
 }
 
@@ -54,17 +52,15 @@ export class BotBillingOptions {
   public broadcast_access: boolean;
 
   constructor(options: Partial<BotBillingOptions>) {
-    if (options) {
-      this.deployments = options.deployments || 0;
-      this.users = options.users || 0;
-      this.nlp = options.nlp || 0;
-      this.api_storages = options.api_storages || 0;
-      this.sso_connection = options.sso_connection || false;
-      this.stripe_connection = options.stripe_connection || false;
-      this.analytics_access = options.analytics_access || false;
-      this.support_access = options.support_access || false;
-      this.broadcast_access = options.broadcast_access || false;
-    }
+    this.deployments = options.deployments || 0;
+    this.users = options.users || 0;
+    this.nlp = options.nlp || 0;
+    this.api_storages = options.api_storages || 0;
+    this.sso_connection = options.sso_connection || false;
+    this.stripe_connection = options.stripe_connection || false;
+    this.analytics_access = options.analytics_access || false;
+    this.support_access = options.support_access || false;
+    this.broadcast_access = options.broadcast_access || false;
   }
 
   /**
@@ -127,14 +123,12 @@ export class BotBilling {
   public enable_downgrade: 'none' | 'no_free' | 'all';
 
   constructor(infos: Partial<BotBilling>) {
-    if (infos) {
-      this.activePlan = infos.activePlan || 'free';
-      this.plan_period_start = infos.plan_period_start || Date.now();
-      this.plans = infos.plans || {};
-      this.options = new BotBillingOptions(infos.options);
-      this.addons = new BotBillingAddons(infos.addons);
-      this.enable_downgrade = infos.enable_downgrade || 'none';
-    }
+    this.activePlan = infos.activePlan || 'free';
+    this.plan_period_start = infos.plan_period_start || Date.now();
+    this.plans = infos.plans || {};
+    this.options = new BotBillingOptions(infos.options);
+    this.addons = new BotBillingAddons(infos.addons);
+    this.enable_downgrade = infos.enable_downgrade || 'none';
   }
 
   /**
@@ -202,13 +196,11 @@ export class BillingPlan extends BotBillingOptions {
 
   constructor(plan: Partial<BillingPlan>) {
     super(plan);
-    if (plan) {
-      this.id = plan.id || 'free';
-      this.name = plan.name || PlanNameConvention[this.id];
-      this.outperforms = plan.outperforms || [];
-      this.is_free_plan = plan.is_free_plan || false;
-      this.rate = plan.rate || 0;
-    }
+    this.id = plan.id || 'free';
+    this.name = plan.name || PlanNameConvention[this.id];
+    this.outperforms = plan.outperforms || [];
+    this.is_free_plan = plan.is_free_plan || false;
+    this.rate = plan.rate || 0;
   }
 
   /**

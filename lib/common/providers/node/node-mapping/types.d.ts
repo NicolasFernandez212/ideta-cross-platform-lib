@@ -6,3 +6,5 @@ export declare type DateOutput = DateDisplay | DateInput | 'timestamp' | 'iso860
 export declare type FallbackType = 'go-to-node' | 'message' | 'ai';
 export declare type RequestType = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 export declare type BodyType = 'XML' | 'JSON' | 'TEXT';
+export declare type MappingActionTrigger = 'enter' | 'leave';
+export declare type OptionBehaviorType = 'message' | 'api';

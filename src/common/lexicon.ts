@@ -6,6 +6,7 @@ export {
   ExamplePart,
   Intent,
   Lexicon,
-  LuisCredentials,
+  LuisCredentials
 } from './providers/lexicon/interfaces';
-export { LexiconCredentials } from './providers/lexicon/types';
+export { LexiconCredentials, NlpService } from './providers/lexicon/types';
+export { NlpOptions } from './providers/lexicon/entities';

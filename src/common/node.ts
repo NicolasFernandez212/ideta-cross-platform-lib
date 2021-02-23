@@ -1,28 +1,13 @@
 export {
-  ApiAsyncAction,
-  AsyncAction,
   BotNode,
-  BroadcastNode,
-  ComparisonAction,
   DataBoundedOperationOptions,
   DataComparison,
   DataComposedOperationOptions,
   DataOperation,
-  DataSearchOperationOptions,
-  EmailAsyncAction,
-  MappingAsyncAction,
-  MappingOptionBehavior,
-  MappingOptions,
-  OperationsAsyncAction,
-  WorkflowAsyncAction
-} from './providers/node/interfaces';
-export {
-  ComparisonActionType,
-  ComparisonType,
-  OperationOptions,
-  OperationType,
-  OptionBehaviorType
-} from './providers/node/types';
+  DataSearchOperationOptions
+} from './providers/node/entities';
+export { ComparisonAction } from './providers/node/interfaces';
+export { ComparisonActionType, ComparisonType, OperationOptions, OperationType } from './providers/node/types';
 
 /*
  * Exports from  NLP-TEMPLATE
@@ -30,29 +15,41 @@ export {
 
 export {
   ButtonElement,
+  GenericElement,
+  MediaElement,
+  NodeTemplate,
+  OpenGraphElement,
+  QuickReplyElement,
+  ReceiptElement,
+  TemplateButtons,
+  TemplateCarrousel,
+  TemplateList,
+  TemplateMedia,
+  TemplateOpenGraph,
+  TemplateQuickReplies,
+  TemplateReceipt,
+  TemplateText
+} from './providers/node/node-template/entities';
+export {
   ButtonElementCall,
   ButtonElementLogin,
   ButtonElementPostback,
   ButtonElementShare,
   ButtonElementUrl,
   GenericAutoOptions,
-  GenericElement,
-  MediaElement,
-  NodeTemplate,
-  OpenGraphElement,
   QuickRepliesAutoOptions,
-  QuickReplyElement,
   ReceiptAddress,
-  ReceiptElement,
-  TemplateButtons,
+  TemplateCarrouselAuto,
+  TemplateCarrouselBase,
+  TemplateCarrouselManual,
   TemplateGenericAuto,
   TemplateGenericManual,
-  TemplateMedia,
-  TemplateOpenGraph,
+  TemplateListAuto,
+  TemplateListBase,
+  TemplateListManual,
+  TemplateQuickRepliesBase,
   TemplateQuickRepliesAuto,
-  TemplateQuickRepliesManual,
-  TemplateReceipt,
-  TemplateText
+  TemplateQuickRepliesManual
 } from './providers/node/node-template/interfaces';
 export {
   ButtonLoginService,
@@ -62,13 +59,8 @@ export {
   QuickReplyContentType,
   Template,
   TemplateButtonType,
-  TemplateCarrousel,
-  TemplateCarrouselManual,
   TemplateDefaultActionType,
   TemplateFeedType,
-  TemplateList,
-  TemplateListManual,
-  TemplateQuickReplies,
   TemplateType
 } from './providers/node/node-template/types';
 
@@ -77,22 +69,32 @@ export {
  */
 
 export {
+  MappingDataInput,
+  MappingGoToNode,
+  MappingSwitch,
+  NodeMapping,
+  ApiAsyncAction,
+  AsyncAction,
+  MappingOptions,
+  EmailAsyncAction,
+  MappingAsyncAction,
+  OperationsAsyncAction,
+  WorkflowAsyncAction
+} from './providers/node/node-mapping/entities';
+export {
   ApiData,
   AssertEqualOptions,
   EntityMapping,
   FallbackOptions,
-  MappingDataInput,
-  MappingGoToNode,
-  MappingSwitch,
-  NlpOptions,
   NlpTrigger,
-  NodeMapping,
   PerformOperationsOptions,
   SaveDataOptions,
+  SaveDataOptionsSettings,
   SaveNlpOptions,
   SendToExternalApiOptions,
   Trigger,
-  TriggersOptions
+  TriggersOptions,
+  MappingOptionBehavior
 } from './providers/node/node-mapping/interfaces';
 export {
   BodyType,
@@ -102,5 +104,7 @@ export {
   FallbackType,
   FormatCheckType,
   MappingType,
-  RequestType
+  RequestType,
+  MappingActionTrigger,
+  OptionBehaviorType
 } from './providers/node/node-mapping/types';

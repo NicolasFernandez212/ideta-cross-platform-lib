@@ -1,15 +1,15 @@
 import {
-  ButtonElement,
   TemplateButtons,
-  TemplateGenericAuto,
-  TemplateGenericManual,
+  TemplateCarrousel,
+  TemplateList,
   TemplateMedia,
   TemplateOpenGraph,
-  TemplateQuickRepliesAuto,
-  TemplateQuickRepliesManual,
+  TemplateQuickReplies,
   TemplateReceipt,
   TemplateText
-} from './interfaces';
+} from './entities';
+
+import { MediaAttachmentType } from '../../request/types';
 
 export type TemplateType =
   | 'text'
@@ -37,10 +37,6 @@ export type LayoutSize = 'small' | 'medium' | 'tall';
 
 export type QuickReplyContentType = 'text' | 'location';
 
-export type TemplateQuickReplies = {
-  text: string;
-} & (TemplateQuickRepliesManual | TemplateQuickRepliesAuto);
-
 export type TemplateButtonType = 'postback' | 'url' | 'login' | 'call' | 'share';
 
 export type TemplateDefaultActionType = 'postback' | 'url';
@@ -50,24 +46,4 @@ export type ButtonUrlWebviewType = 'tall' | 'compact' | 'full';
 // !! Must be updated along with OauthService type
 export type ButtonLoginService = 'google' | 'facebook';
 
-export type MediaType = 'image' | 'video' | 'audio' | 'map' | 'calendar';
-
-export type TemplateListManual = {
-  intro?: string;
-  buttons?: ButtonElement[];
-} & TemplateGenericManual;
-
-export type TemplateList = {
-  intro?: string;
-  buttons?: ButtonElement[];
-} & (TemplateGenericManual | TemplateGenericAuto);
-
-export type TemplateCarrouselManual = {
-  intro?: string;
-  size?: LayoutSize;
-} & TemplateGenericManual;
-
-export type TemplateCarrousel = {
-  intro?: string;
-  size?: LayoutSize;
-} & (TemplateGenericManual | TemplateGenericAuto);
+export type MediaType = MediaAttachmentType | 'map' | 'calendar';

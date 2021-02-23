@@ -1,12 +1,11 @@
 export {
   DataAsyncAction,
   DataRichSegment,
-  DataStore,
   DataStoreElem,
   DataStoreArrayElems,
   DataStoreElemKey,
   DataStoreElemKeys,
-  ParsedAddress,
+  ParsedAddress
 } from './providers/data/interfaces';
 export {
   AllowedScope,
@@ -15,5 +14,6 @@ export {
   DataStoreElemArrayType,
   DataStoreElemKeyType,
   DataStoreElemType,
-  RealScope,
+  RealScope
 } from './providers/data/types';
+export { DataStore } from './providers/data/entities';

@@ -1,33 +1,7 @@
-/**
- * Conversations model
- *
- * Type : DB model (conversations/{botId}/{channel}/{userId})
- * Representation : Front, Back, CF
- */
-export interface Conversation {
-    userId: string;
-    status: string;
-    messages: number;
-    data: {
-        [key: string]: any;
-    };
-    metadata: ConversationMetadata;
-    first_connection: Date;
-    last_sent: Date;
-    last_delivered: Date;
-    last_read: Date;
-    label: string;
-    assigneeId: string;
+import { Actor } from './types';
+export interface ConversationData {
+    [key: string]: any;
 }
-/**
- * Conversation metadata model
- *
- * Type : DB model (conversations/{botId}/{channel}/{userId}/metadata)
- * Representation : Front, Back, CF
- */
-export declare type ConversationMetadata = {
-    [actor in Actor]?: ActorMetadata;
-};
 /**
  * Actors metadata model
  * Used to display infos like typing indicator or last message sending date
@@ -52,8 +26,11 @@ export interface Actors {
     receiver: Actor;
 }
 /**
- * Actors of a conversation
+ * This interface is not really useful as of 24-apr-2020.
  *
- * Representation : Front, Back, CF
  */
-export declare type Actor = 'bot' | 'user';
+export interface Path {
+    [id: string]: {
+        [fromId: string]: string;
+    };
+}

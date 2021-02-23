@@ -1,5 +1,5 @@
-import { TemplateButtons, TemplateMedia, TemplateOpenGraph, TemplateQuickRepliesManual, TemplateReceipt, TemplateText } from '../node/node-template/interfaces';
-import { TemplateCarrouselManual, TemplateListManual } from '../node/node-template/types';
+import { TemplateButtons, TemplateMedia, TemplateOpenGraph, TemplateReceipt, TemplateText } from '../node/node-template/entities';
+import { TemplateCarrouselManual, TemplateListManual, TemplateQuickRepliesManual } from '../node/node-template/interfaces';
 export declare type MessageTemplate = MessageTemplateText | MessageTemplateQuickReplies | MessageTemplateButtons | MessageTemplateMedia | MessageTemplateList | MessageTemplateCarrousel | MessageTemplateReceipt | MessageTemplateOpenGraph;
 export declare type MessageTemplateText = {
     type: 'text';

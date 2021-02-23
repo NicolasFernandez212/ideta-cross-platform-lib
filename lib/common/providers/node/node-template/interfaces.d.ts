@@ -1,27 +1,6 @@
-import { ButtonLoginService, ButtonUrlWebviewType, MediaType, QuickReplyContentType, TemplateButtonType, TemplateCarrousel, TemplateList, TemplateQuickReplies, TemplateType } from './types';
-import { DataOperation } from '../interfaces';
-export interface NodeTemplate {
-    type: TemplateType;
-    templateText?: TemplateText;
-    templateQuickReplies?: TemplateQuickReplies;
-    templateButton?: TemplateButtons;
-    templateMedia?: TemplateMedia;
-    templateList?: TemplateList;
-    templateGeneric?: TemplateCarrousel;
-    templateReceipt?: TemplateReceipt;
-    templateOpenGraph?: TemplateOpenGraph;
-}
-export interface TemplateText {
-    text: string;
-}
-export interface TemplateQuickRepliesManual {
-    feedType: 'manual';
-    quickReplies: QuickReplyElement[];
-}
-export interface TemplateQuickRepliesAuto {
-    feedType: 'auto';
-    autoOptions: QuickRepliesAutoOptions;
-}
+import { ButtonElement, GenericElement, QuickReplyElement } from './entities';
+import { ButtonLoginService, ButtonUrlWebviewType, LayoutSize, TemplateButtonType, TemplateFeedType } from './types';
+import { DataOperation } from '../entities';
 export interface QuickRepliesAutoOptions {
     listKey?: string;
     title?: string;
@@ -30,17 +9,16 @@ export interface QuickRepliesAutoOptions {
     fallbackNode?: string;
     operations?: DataOperation[];
 }
-export interface QuickReplyElement {
-    contentType: QuickReplyContentType;
-    title?: string | number;
-    targetNode?: string;
-    imageUrl?: string;
-    operations?: DataOperation[];
-}
-export interface TemplateButtons {
+export interface TemplateQuickRepliesBase {
+    feedType: TemplateFeedType;
     text: string;
-    buttons: ButtonElement[];
 }
+export declare type TemplateQuickRepliesAuto = TemplateQuickRepliesBase & {
+    autoOptions?: QuickRepliesAutoOptions;
+};
+export declare type TemplateQuickRepliesManual = TemplateQuickRepliesBase & {
+    quickReplies?: QuickReplyElement[];
+};
 /**
  * This model is declared for type construction only
  */
@@ -48,7 +26,6 @@ interface ButtonElementBase {
     type: TemplateButtonType;
     title?: string;
 }
-export declare type ButtonElement = ButtonElementPostback & ButtonElementUrl & ButtonElementLogin & ButtonElementCall & ButtonElementShare;
 /**
  * type must be 'postback'
  */
@@ -84,22 +61,6 @@ export declare type ButtonElementCall = ButtonElementBase & {
  * type must be 'share'
  */
 export declare type ButtonElementShare = ButtonElementBase;
-export interface TemplateMedia {
-    intro?: string;
-    elements: MediaElement[];
-}
-export interface MediaElement {
-    mediaType: MediaType;
-    url?: string;
-    buttons?: ButtonElement[];
-}
-export interface GenericElement {
-    title: string;
-    subtitle?: string;
-    imageUrl?: string;
-    defaultAction?: ButtonElement;
-    buttons?: ButtonElement[];
-}
 export interface GenericAutoOptions {
     listKey: string;
     title?: string;
@@ -110,41 +71,25 @@ export interface GenericAutoOptions {
     buttons?: ButtonElement[];
 }
 export interface TemplateGenericManual {
-    feedType: 'manual';
-    elements: GenericElement[];
+    elements?: GenericElement[];
 }
 export interface TemplateGenericAuto {
-    feedType: 'auto';
-    autoOptions: GenericAutoOptions;
+    autoOptions?: GenericAutoOptions;
 }
-export interface TemplateReceipt {
-    recipientName?: string;
-    orderNumber?: string;
-    currency?: string;
-    paymentMethod?: string;
-    orderUrl?: string;
-    timestamp?: string;
-    address?: ReceiptAddress;
-    summary?: {
-        totalCost?: number;
-        subtotal?: number;
-        shippingCost?: number;
-        totalTax?: number;
-    };
-    adjustments?: {
-        name?: string;
-        amount?: number;
-    }[];
-    elements?: ReceiptElement[];
+export interface TemplateListBase {
+    feedType: TemplateFeedType;
+    intro?: string;
+    buttons?: ButtonElement[];
 }
-export interface ReceiptElement {
-    title: string;
-    subtitle?: string;
-    quantity?: number;
-    price: number;
-    currency?: string;
-    imageUrl?: string;
+export declare type TemplateListAuto = TemplateListBase & TemplateGenericAuto;
+export declare type TemplateListManual = TemplateListBase & TemplateGenericManual;
+export interface TemplateCarrouselBase {
+    feedType: TemplateFeedType;
+    intro?: string;
+    size?: LayoutSize;
 }
+export declare type TemplateCarrouselAuto = TemplateCarrouselBase & TemplateGenericAuto;
+export declare type TemplateCarrouselManual = TemplateCarrouselBase & TemplateGenericManual;
 export interface ReceiptAddress {
     street1?: string;
     street2?: string;
@@ -152,12 +97,5 @@ export interface ReceiptAddress {
     postalCode?: string;
     state?: string;
     country?: string;
-}
-export interface TemplateOpenGraph {
-    elements: OpenGraphElement[];
-}
-export interface OpenGraphElement {
-    url: string;
-    buttons: ButtonElement[];
 }
 export {};

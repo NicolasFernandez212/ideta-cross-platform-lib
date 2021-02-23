@@ -15,13 +15,6 @@ export type Channel = 'sandbox' | 'web' | 'facebook' | 'google' | 'slack' | 'smo
 export type DeployableChannel = Exclude<Channel, 'sandbox'>;
 
 /**
- * All NLP services currently available in app
- *
- * Representation : Front, Back, CF
- */
-export type NlpService = 'dialogflow' | 'luis';
-
-/**
  * All status of lexicon import/export steps
  *
  * Representation : Front, Back, CF
