@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/papagei89/ideta-cross-platform-lib#readme",
   "dependencies": {
-    "crypto": "^1.0.1",
     "lodash": "^4.17.21",
     "typeorm": "^0.2.28"
   },
