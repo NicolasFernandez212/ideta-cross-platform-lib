@@ -42,10 +42,10 @@ export class Conversation {
       this.path = conversation.path || {};
       this.data = conversation.data || {};
       this.metadata = conversation.metadata || {};
-      this.first_connection = conversation.first_connection || new Date();
-      this.last_delivered = conversation.last_delivered || new Date();
-      this.last_read = conversation.last_read || new Date();
-      this.last_sent = conversation.last_sent || new Date();
+      this.first_connection = conversation.first_connection ? new Date(conversation.first_connection) : new Date();
+      this.last_delivered = conversation.last_delivered ? new Date(conversation.last_delivered) : new Date();
+      this.last_read = conversation.last_read ? new Date(conversation.last_read) : new Date();
+      this.last_sent = conversation.last_sent ? new Date(conversation.last_sent) : new Date();
       this.isRead = conversation.isRead || false;
       this.label = conversation.label;
       if (conversation.assigneeId) this.assigneeId = conversation.assigneeId;

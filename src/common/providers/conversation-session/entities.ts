@@ -11,7 +11,10 @@ export class ConversationSession {
     if (session) {
       this.botToken = session.botToken;
       this.updatedAt = new Date(session.updatedAt).toISOString() as any;
-      this.keepAlives = session.keepAlives || [];
+      this.lastEmitter = session.lastEmitter;
+      this.keepAlives = (session.keepAlives || []).sort(
+        (a: ConversationKeepAlive, b: ConversationKeepAlive) => a.delay - b.delay
+      );
     }
   }
 }

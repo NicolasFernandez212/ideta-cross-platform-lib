@@ -66,7 +66,7 @@ export class BotBillingOptions {
   /**
    * Update a specific option value
    *
-   * Called in : Front, CF
+   * Called in : Front
    *
    * @param option - target option to update
    * @param value - new value of target option
@@ -126,8 +126,8 @@ export class BotBilling {
     this.activePlan = infos.activePlan || 'free';
     this.plan_period_start = infos.plan_period_start || Date.now();
     this.plans = infos.plans || {};
-    this.options = new BotBillingOptions(infos.options);
-    this.addons = new BotBillingAddons(infos.addons);
+    this.options = new BotBillingOptions(infos.options || {});
+    this.addons = new BotBillingAddons(infos.addons || {});
     this.enable_downgrade = infos.enable_downgrade || 'none';
   }
 

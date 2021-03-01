@@ -36,7 +36,7 @@ export const Plans = [
     stripe_connection: true,
     analytics_access: true,
     support_access: true,
-    broadcast_access: true
+    broadcast_access: false
   }),
 
   new BillingPlan({
@@ -52,7 +52,7 @@ export const Plans = [
     stripe_connection: false,
     analytics_access: true,
     support_access: false,
-    broadcast_access: true
+    broadcast_access: false
   }),
 
   new BillingPlan({
@@ -68,7 +68,7 @@ export const Plans = [
     stripe_connection: false,
     analytics_access: true,
     support_access: true,
-    broadcast_access: true
+    broadcast_access: false
   }),
 
   new BillingPlan({
@@ -84,6 +84,6 @@ export const Plans = [
     stripe_connection: true,
     analytics_access: true,
     support_access: true,
-    broadcast_access: true
+    broadcast_access: false
   })
 ];

@@ -9,8 +9,8 @@ import { PlanId, PlanName } from './types';
 export interface PlanInfos {
   id?: PlanId;
   name?: PlanName;
-  active_trial?: boolean; //  is admin on trial for this plan
-  expired_trial?: boolean; // has admin already used his trial
+  active_trial?: boolean; // admin is on trial for this plan
+  expired_trial?: boolean; // admin has already used his trial
   periods?: PlanPeriod[]; // records of all past periods in this plan
 }
 

@@ -1,10 +1,10 @@
-import { DisplayOptions } from './interfaces';
+import { ChannelsOptions, DisplayOptions } from './interfaces';
 /**
  * All channels currently available in app
  *
  * Representation : Front, Back, CF
  */
-export declare type Channel = 'sandbox' | 'web' | 'facebook' | 'google' | 'slack' | 'smooch' | 'twiliovoice' | 'workplace';
+export declare type Channel = keyof ChannelsOptions;
 /**
  * All channels that can be deployed
  *
@@ -48,3 +48,4 @@ export declare type BackgroundType = 'url' | 'color';
  * Representation : Front
  */
 export declare type DisplayContext = 'preview' | 'sandbox' | 'web' | 'cockpit' | 'embedded';
+export declare type SendButtonAppearance = 'plain' | 'light' | 'share' | 'text' | 'textPlain' | 'textLight' | 'textShare';

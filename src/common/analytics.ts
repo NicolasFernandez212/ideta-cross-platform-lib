@@ -3,6 +3,6 @@ export {
   BotSummary,
   DataKeySplit,
   QueryAdditionalFilters,
-  QueryFilters,
+  QueryFilters
 } from './providers/analytics/interfaces';
 export { AggregationStep, CollectionName, Granularity, TimeSerie, TimeSeries } from './providers/analytics/types';

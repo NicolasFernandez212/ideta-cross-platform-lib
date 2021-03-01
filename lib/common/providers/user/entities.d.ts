@@ -1,11 +1,11 @@
-import { FacebookUserInfos, UserRoleObject } from './interfaces';
+import { FacebookUserInfos, UserEntry } from './interfaces';
 import { AvailableLang, UserStatus } from './types';
 import { PlanId } from '../billing/types';
 export declare class User {
     id: string;
     avatarUrl?: string;
     bots: {
-        [botId: string]: UserRoleObject;
+        [botId: string]: UserEntry;
     };
     customer?: {
         id: string;

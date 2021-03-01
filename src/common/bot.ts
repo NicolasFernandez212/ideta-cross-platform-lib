@@ -1,8 +1,9 @@
+export { Bot } from './providers/bot/entities';
 export {
   BackgroundOption,
-  Bot,
   BotTemplateSettings,
   ChannelInfos,
+  ChannelsOptions,
   ChatOption,
   ColorsOption,
   DataTransferOrder,
@@ -20,7 +21,7 @@ export {
   NlpServiceInfos,
   OAuthServiceInfos,
   ShareInfos,
-  SlackInfos,
+  SlackChannelInfos,
   SlackAppInfos,
   SlackTeam,
   SmoochChannelInfos,
@@ -44,5 +45,6 @@ export {
   DisplayContext,
   DisplayOptionName,
   NlpServiceStatus,
-  OAuthService
+  OAuthService,
+  SendButtonAppearance
 } from './providers/bot/types';

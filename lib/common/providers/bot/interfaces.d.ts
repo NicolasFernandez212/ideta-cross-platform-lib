@@ -1,51 +1,6 @@
-import { Channel, OAuthService, NlpServiceStatus, DisplayOptionName, BackgroundType, DisplayContext } from './types';
-import { BotBilling } from '../billing/entities';
-import { UserRoleObject } from '../user/interfaces';
+import { NlpServiceStatus, DisplayOptionName, BackgroundType, DisplayContext, SendButtonAppearance } from './types';
 import { LayoutSize } from '../node/node-template/types';
-import { DataStore } from '../data/entities';
-import { ConversationKeepAlive } from '../conversation-session/interfaces';
-import { NlpOptions } from '../lexicon/entities';
-import { NlpService } from '../lexicon/types';
 import { ButtonElement } from '../node/node-template/entities';
-import { MappingOptions } from '../node/node-mapping/entities';
-/**
- * Bot model
- *
- * Type : DB model (bots/{botId})
- * Representation : Front, Back, CF
- */
-export interface Bot {
-    id: string;
-    name: string;
-    createdAt: Date;
-    createdBy: string;
-    updatedAt: Date;
-    endPointBack: string;
-    nbNodes: number;
-    users: {
-        [id: string]: UserRoleObject;
-    };
-    conversationKeepAlives?: ConversationKeepAlive[];
-    defaultMappingOptions: MappingOptions;
-    dataStore?: DataStore;
-    globalIntents?: NlpOptions;
-    emailWatermark?: EmailWatermark;
-    channels?: {
-        [channel in Channel]: ChannelInfos;
-    };
-    nlpServices?: {
-        [service in NlpService]: NlpServiceInfos;
-    };
-    oauthServices?: {
-        [service in OAuthService]: OAuthServiceInfos;
-    };
-    billing?: BotBilling;
-    token: string;
-    useChannelDataStore?: boolean;
-    useMap?: boolean;
-    useAutoConnect?: boolean;
-    templateSettings?: BotTemplateSettings;
-}
 /**
  * Nlp service infos model
  *
@@ -106,6 +61,22 @@ export interface BotTemplateSettings {
  * with custom values
  */
 /**
+ * Global model for all channels options stored in bots
+ *
+ * Type : DB model (bots/{botId}/channels)
+ * Representation : Front, Back, CF
+ */
+export interface ChannelsOptions {
+    sandbox: ChannelInfos;
+    web: WebChannelInfos;
+    facebook: FacebookChannelInfos;
+    google: GoogleChannelInfos;
+    slack: SlackChannelInfos;
+    smooch: SmoochChannelInfos;
+    twiliovoice: TwilioChannelInfos;
+    workplace: WorkplaceChannelInfos;
+}
+/**
  * Generic channel infos model
  * (all channel have its own interface definition implementing this one)
  *
@@ -155,7 +126,17 @@ export interface TwilioChannelInfos extends ChannelInfos {
  * Representation : Front, Back, CF
  */
 export interface TwilioPageInfos {
-    id: string;
+    id?: string;
+    accountSID?: string;
+    authToken?: string;
+    flowId?: string;
+    friendlyName?: string;
+    transferPhoneNumber?: string;
+    timeoutListening?: string;
+    problemInitiating?: string;
+    problemConnecting?: string;
+    speechModel?: string;
+    speechTimeout?: string;
 }
 /**
  * Specified channel infos model for SMOOCH
@@ -182,7 +163,7 @@ export interface SmoochPageInfos {
  * Type : DB model (bots/{botId}/channels/slack)
  * Representation : Front, Back, CF
  */
-export interface SlackInfos extends ChannelInfos {
+export interface SlackChannelInfos extends ChannelInfos {
     appInfos: SlackAppInfos;
     teams: {
         [teamId: string]: SlackTeam;
@@ -393,6 +374,8 @@ export interface ChatOption extends DisplayOption {
         layout: LayoutSize;
         nodesLayout: LayoutSize;
         useNotificationSound: boolean;
+        sendButtonAppearance: SendButtonAppearance;
+        sendButtonText: string;
     };
 }
 /**

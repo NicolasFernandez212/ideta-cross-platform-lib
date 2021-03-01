@@ -1,6 +1,6 @@
 import { UserRole } from './types';
 
-export interface UserRoleObject {
+export interface UserEntry {
   id: string;
   role: UserRole;
 }

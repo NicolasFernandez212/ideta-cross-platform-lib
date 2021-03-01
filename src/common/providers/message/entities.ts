@@ -28,9 +28,9 @@ export class Message {
       if (message.channel) this.channel = message.channel;
       this.userId = message.userId;
       this.sender = message.sender;
-      this.template = message.template;
-      this.node = message.node;
-      this.sent_at = message.sent_at || new Date();
+      this.template = message.template; // should be {} ?
+      this.node = message.node; // should be {} ?
+      this.sent_at = message.sent_at ? new Date(message.sent_at) : new Date();
     }
   }
 }

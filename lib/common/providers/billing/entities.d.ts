@@ -41,7 +41,7 @@ export declare class BotBillingOptions {
     /**
      * Update a specific option value
      *
-     * Called in : Front, CF
+     * Called in : Front
      *
      * @param option - target option to update
      * @param value - new value of target option

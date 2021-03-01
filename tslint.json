@@ -38,8 +38,8 @@
     "no-trailing-whitespace": [true, "ignore-jsdoc"],
     "no-unnecessary-initializer": true,
     "no-unused-expression": true,
-    "no-unused-variable": true,
-    "no-use-before-declare": true,
+    "no-unused-variable": false,
+    "no-use-before-declare": false,
     "no-null-keyword": false,
     "no-var-keyword": true,
     "object-literal-key-quotes": [true, "as-needed"],
@@ -69,7 +69,7 @@
         "variable-declaration": "onespace"
       }
     ],
-    "typeof-compare": true,
+    "typeof-compare": false,
     "unified-signatures": true,
     "variable-name": [
       true,

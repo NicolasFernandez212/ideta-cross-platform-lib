@@ -1,4 +1,4 @@
-import { FacebookUserInfos, UserRoleObject } from './interfaces';
+import { FacebookUserInfos, UserEntry } from './interfaces';
 import { AvailableLang, UserStatus } from './types';
 
 import { PlanId } from '../billing/types';
@@ -7,7 +7,7 @@ export class User {
   public id: string;
   public avatarUrl?: string;
   public bots: {
-    [botId: string]: UserRoleObject;
+    [botId: string]: UserEntry;
   };
   public customer?: {
     id: string;
