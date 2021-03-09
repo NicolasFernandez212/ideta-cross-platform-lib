@@ -9,7 +9,7 @@ export type DataStoreElemArrayType = DataStoreElemKeyType | 'object';
 export type DataStoreElemType = DataStoreElemArrayType | 'array';
 
 /**
- * Allowed type is used in the front to determine if which type of keys can be selected in specific form
+ * Allowed type is used in the front to determine if which type of keys can be selected in specific forms
  * e.g. in text bubbles, only primitive keys can be used, therefore, we pass 'string', 'number' and 'boolean'
  * to the associated form
  *
