@@ -1,8 +1,30 @@
 import { get } from 'lodash';
 
+import { Intent, Entity, Example } from './interfaces';
 import { NlpService } from './types';
 
 import { NlpTrigger, SaveNlpOptions } from '../node/node-mapping/interfaces';
+
+export class Lexicon {
+  public intents: Intent[];
+  public entities: Entity[];
+  public examples: Example[];
+
+  constructor(lexicon: any) {
+    this.intents = Object.keys(lexicon.intents || {}).map((intentId: string) => ({
+      id: intentId,
+      ...lexicon.intents[intentId]
+    }));
+    this.entities = Object.keys(lexicon.entities || {}).map((entityId: string) => ({
+      id: entityId,
+      ...lexicon.entities[entityId]
+    }));
+    this.examples = Object.keys(lexicon.examples || {}).map((exampleId: string) => ({
+      id: exampleId,
+      ...lexicon.examples[exampleId]
+    }));
+  }
+}
 
 export class NlpOptions {
   public active: boolean;
@@ -30,5 +52,3 @@ export class NlpOptions {
     }
   }
 }
-
-

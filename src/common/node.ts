@@ -38,7 +38,6 @@ export {
   ButtonElementUrl,
   GenericAutoOptions,
   QuickRepliesAutoOptions,
-  ReceiptAddress,
   TemplateCarrouselAuto,
   TemplateCarrouselBase,
   TemplateCarrouselManual,
@@ -52,6 +51,7 @@ export {
   TemplateQuickRepliesManual
 } from './providers/node/node-template/interfaces';
 export {
+  AuthorizedTypes,
   ButtonLoginService,
   ButtonUrlWebviewType,
   LayoutSize,

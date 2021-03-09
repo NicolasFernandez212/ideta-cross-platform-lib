@@ -58,7 +58,7 @@ export interface DataAsyncAction {
  */
 export interface DataRichSegment {
   type?: 'literal' | 'key' | 'element';
-  value?: string;
+  value?: string | number;
 }
 
 export interface DataAsyncAction {

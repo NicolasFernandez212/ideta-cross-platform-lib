@@ -1,3 +1,5 @@
+import { get } from 'lodash';
+
 import { FacebookUserInfos, UserEntry } from './interfaces';
 import { AvailableLang, UserStatus } from './types';
 
@@ -35,6 +37,38 @@ export class User {
       this.plans = user.plans || {};
       this.settings = user.settings || {};
       this.status = user.status;
+    }
+  }
+
+  public can(action: string, botId: string): boolean {
+    const isOwner = get(this, `bots.${botId}.role`) === 'owner';
+
+    switch (action) {
+      case 'createBot':
+        // User is authenticated
+        return true;
+      case 'deployBot':
+      case 'undeployBot':
+      case 'updateNbNodes':
+      case 'getServiceIntents':
+      case 'getServiceEntities':
+      case 'getServiceDiff':
+      case 'importLexicon':
+      case 'exportLexicon':
+      case 'connectPage':
+      case 'connectSlack':
+      case 'disconnectPage':
+      case 'isWorkplaceAppSubscribed':
+      case 'subscribeWorkplaceApp':
+      case 'fetchAgents':
+        return !!(this.bots && this.bots[botId]); // One of user's bots
+      case 'duplicateBot':
+      case 'deleteBot':
+      case 'updateLexiconCredentials':
+      case 'updateBotUsers':
+        return this.status !== 'admin' || isOwner;
+      default:
+        return false;
     }
   }
 }

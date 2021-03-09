@@ -1,6 +1,7 @@
 import { TemplateButtons, TemplateCarrousel, TemplateList, TemplateMedia, TemplateOpenGraph, TemplateQuickReplies, TemplateReceipt, TemplateText } from './entities';
 import { MediaAttachmentType } from '../../request/types';
 export declare type TemplateType = 'text' | 'quick-replies' | 'button' | 'media' | 'list' | 'generic' | 'receipt' | 'open-graph';
+export declare type AuthorizedTypes = TemplateType | 'stripe';
 export declare type Template = TemplateText | TemplateQuickReplies | TemplateButtons | TemplateMedia | TemplateList | TemplateCarrousel | TemplateReceipt | TemplateOpenGraph;
 export declare type TemplateFeedType = 'manual' | 'auto';
 export declare type LayoutSize = 'small' | 'medium' | 'tall';

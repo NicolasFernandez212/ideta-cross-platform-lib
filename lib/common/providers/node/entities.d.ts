@@ -7,11 +7,13 @@ export declare class BotNode {
     id: string;
     key: string;
     name: string;
+    category?: string;
     template: NodeTemplate;
     mapping: NodeMapping;
     createdAt: Date;
     createdBy: string;
     constructor(node: any);
+    get abstractType(): string;
     get isSwitchNode(): boolean;
     get isGoToNode(): boolean;
     get isDataInputNode(): boolean;

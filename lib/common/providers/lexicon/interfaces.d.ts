@@ -22,12 +22,15 @@ export interface ExamplePart {
     entityId: string;
     text: string;
 }
-export interface LuisCredentials {
-    appId: string;
-    appVersion: string;
-    authKey: string;
-    endpointKey: string;
-    useAuthAsEndpointKey: boolean;
+export interface LexiconDiff {
+    intents: LexiconDiffItem;
+    entities: LexiconDiffItem;
+    examples: LexiconDiffItem;
+}
+export interface LexiconDiffItem {
+    nbRemote: number;
+    nbBoth: number;
+    nbLocal: number;
 }
 export interface DialogflowCredentials {
     access_token?: string;
@@ -36,7 +39,10 @@ export interface DialogflowCredentials {
     client_email?: string;
     project_id?: string;
 }
-export interface Lexicon {
-    intents: any;
-    entities: any;
+export interface LuisCredentials {
+    appId: string;
+    appVersion: string;
+    authKey: string;
+    endpointKey?: string;
+    useAuthAsEndpointKey: boolean;
 }

@@ -15,6 +15,7 @@ export class BotNode {
   public id: string;
   public key: string;
   public name: string;
+  public category?: string;
   public template: NodeTemplate;
   public mapping: NodeMapping;
   public createdAt: Date;
@@ -23,6 +24,8 @@ export class BotNode {
   constructor(node: any) {
     if (node) {
       this.id = node.id;
+      this.key = node.key;
+      this.category = node.category;
       this.name = node.name;
       this.template = new NodeTemplate(node.template);
       this.mapping = new NodeMapping(node.mapping);
@@ -31,12 +34,16 @@ export class BotNode {
     }
   }
 
-  public get isSwitchNode(): boolean {
+  public get abstractType(): string {
     return (
       this.mapping.type === 'switch' &&
       this.mapping.switch &&
-      !!Object.keys(this.mapping.switch).find((key: string) => get(this.mapping.switch, `${key}.active`, false))
+      Object.keys(this.mapping.switch).find((key: string) => get(this.mapping.switch, `${key}.active`, false))
     );
+  }
+
+  public get isSwitchNode(): boolean {
+    return !!this.abstractType;
   }
 
   public get isGoToNode(): boolean {

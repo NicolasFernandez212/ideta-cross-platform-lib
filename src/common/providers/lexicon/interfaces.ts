@@ -1,6 +1,6 @@
 export interface EntityValue {
   name: string; // EXAMPLE: 'cake'
-  synonyms: string; // EXAMPLE: 'pastry;cookies'
+  synonyms: string; // EXAMPLE: 'pastry;cookies' in the form "Synonym A; Synonym B; Synonym C; ..."
 }
 
 export interface Entity {
@@ -27,12 +27,16 @@ export interface ExamplePart {
   text: string;
 }
 
-export interface LuisCredentials {
-  appId: string;
-  appVersion: string;
-  authKey: string;
-  endpointKey: string;
-  useAuthAsEndpointKey: boolean;
+export interface LexiconDiff {
+  intents: LexiconDiffItem;
+  entities: LexiconDiffItem;
+  examples: LexiconDiffItem;
+}
+
+export interface LexiconDiffItem {
+  nbRemote: number;
+  nbBoth: number;
+  nbLocal: number;
 }
 
 export interface DialogflowCredentials {
@@ -43,7 +47,10 @@ export interface DialogflowCredentials {
   project_id?: string;
 }
 
-export interface Lexicon {
-  intents: any;
-  entities: any;
+export interface LuisCredentials {
+  appId: string;
+  appVersion: string;
+  authKey: string;
+  endpointKey?: string;
+  useAuthAsEndpointKey: boolean;
 }

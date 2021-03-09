@@ -21,4 +21,5 @@ export declare class User {
     settings?: any;
     status?: UserStatus;
     constructor(user?: Partial<User>);
+    can(action: string, botId: string): boolean;
 }

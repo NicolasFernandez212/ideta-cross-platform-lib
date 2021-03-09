@@ -21,6 +21,8 @@ export type TemplateType =
   | 'receipt'
   | 'open-graph';
 
+export type AuthorizedTypes = TemplateType | 'stripe';
+
 export type Template =
   | TemplateText
   | TemplateQuickReplies

@@ -1,3 +1,4 @@
+export { Lexicon, NlpOptions } from './providers/lexicon/entities';
 export {
   DialogflowCredentials,
   Entity,
@@ -5,8 +6,8 @@ export {
   Example,
   ExamplePart,
   Intent,
-  Lexicon,
+  LexiconDiff,
+  LexiconDiffItem,
   LuisCredentials
 } from './providers/lexicon/interfaces';
 export { LexiconCredentials, NlpService } from './providers/lexicon/types';
-export { NlpOptions } from './providers/lexicon/entities';

@@ -90,12 +90,4 @@ export interface TemplateCarrouselBase {
 }
 export declare type TemplateCarrouselAuto = TemplateCarrouselBase & TemplateGenericAuto;
 export declare type TemplateCarrouselManual = TemplateCarrouselBase & TemplateGenericManual;
-export interface ReceiptAddress {
-    street1?: string;
-    street2?: string;
-    city?: string;
-    postalCode?: string;
-    state?: string;
-    country?: string;
-}
 export {};
