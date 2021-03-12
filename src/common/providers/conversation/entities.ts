@@ -36,7 +36,7 @@ export class Conversation {
       if (conversation._id) this._id = conversation._id;
       if (conversation.botId) this.botId = conversation.botId;
       if (conversation.channel) this.channel = conversation.channel;
-      this.userId = conversation.userId;
+      if (conversation.userId) this.userId = conversation.userId;
       this.status = conversation.status || 'noeud_0';
       this.messages = conversation.messages || 0;
       this.path = conversation.path || {};
@@ -47,7 +47,7 @@ export class Conversation {
       this.last_read = conversation.last_read ? new Date(conversation.last_read) : new Date();
       this.last_sent = conversation.last_sent ? new Date(conversation.last_sent) : new Date();
       this.isRead = conversation.isRead || false;
-      this.label = conversation.label;
+      this.label = conversation.label || null;
       if (conversation.assigneeId) this.assigneeId = conversation.assigneeId;
     }
   }

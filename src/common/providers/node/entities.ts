@@ -6,6 +6,7 @@ import { ComparisonType, OperationOptions, OperationType } from './types';
 import { DataRichSegment } from '../data/interfaces';
 import { NodeMapping } from './node-mapping/entities';
 import { NodeTemplate } from './node-template/entities';
+import { DataInputType } from './node-mapping/types';
 
 /*
  * node -----------------------------------------------------------------------
@@ -51,10 +52,16 @@ export class BotNode {
   }
 
   public get isDataInputNode(): boolean {
+    return !!this.dataInputType;
+  }
+
+  public get dataInputType(): string {
     return (
       this.mapping.type === 'data-input' &&
       this.mapping.dataInput &&
-      !!Object.keys(this.mapping.dataInput).find((key: string) => get(this.mapping.dataInput, `${key}.active`, false))
+      (Object.keys(this.mapping.dataInput) as DataInputType[]).find((key) =>
+        get(this.mapping.dataInput, `${key}.active`, false)
+      )
     );
   }
 

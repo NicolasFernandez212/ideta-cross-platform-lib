@@ -98,6 +98,7 @@ export {
 } from './providers/node/node-mapping/interfaces';
 export {
   BodyType,
+  DataInputType,
   DateDisplay,
   DateInput,
   DateOutput,

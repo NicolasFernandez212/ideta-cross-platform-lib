@@ -1,4 +1,6 @@
+import { MappingDataInput } from './entities';
 export declare type MappingType = 'data-input' | 'go-to-node' | 'switch';
+export declare type DataInputType = keyof MappingDataInput;
 export declare type FormatCheckType = 'none' | 'email' | 'phone' | 'date' | 'number' | 'custom' | 'country' | 'nationality';
 export declare type DateDisplay = 'asInput' | 'dd/mm/yyyy' | 'mm/dd/yyyy' | 'yyyy/mm/dd';
 export declare type DateInput = 'dd-mm-yyyy' | 'mm-dd-yyyy';

@@ -17,6 +17,7 @@ export declare class BotNode {
     get isSwitchNode(): boolean;
     get isGoToNode(): boolean;
     get isDataInputNode(): boolean;
+    get dataInputType(): string;
     get isSystemNode(): boolean;
 }
 export declare class DataBoundedOperationOptions {

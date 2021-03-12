@@ -9,9 +9,9 @@ export class ConversationSession {
 
   constructor(session?: any) {
     if (session) {
-      this.botToken = session.botToken;
-      this.updatedAt = new Date(session.updatedAt);
-      this.lastEmitter = session.lastEmitter;
+      this.botToken = session.botToken || null;
+      this.updatedAt = session.updatedAt ? new Date(session.updatedAt) : new Date();
+      this.lastEmitter = session.lastEmitter || null;
       this.keepAlives = (session.keepAlives || []).sort(
         (a: ConversationKeepAlive, b: ConversationKeepAlive) => a.delay - b.delay
       );

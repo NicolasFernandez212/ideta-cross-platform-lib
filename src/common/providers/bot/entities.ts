@@ -58,8 +58,8 @@ export class Bot {
     this.billing = new BotBilling(bot.billing || {});
     this.channels = bot.channels || {};
     this.conversationKeepAlives = bot.conversationKeepAlives || [];
-    this.createdAt = bot.createdAt;
-    this.createdBy = bot.createdBy;
+    this.createdAt = bot.createdAt || null;
+    this.createdBy = bot.createdBy || null;
     this.dataStore = bot.dataStore || {};
     this.defaultMappingOptions = bot.defaultMappingOptions || {};
     this.emailWatermark = bot.emailWatermark || {};

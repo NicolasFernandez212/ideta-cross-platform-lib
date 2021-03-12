@@ -37,18 +37,22 @@ export class NlpOptions {
   constructor(nlpOptions?: any) {
     if (nlpOptions) {
       this.active = nlpOptions.active;
-      this.options = {
-        service: get(nlpOptions, 'options.service'),
-        intents: get(nlpOptions, 'options.intents', []),
-        storage: {
-          active: get(nlpOptions, 'options.storage.active'),
-          options: {
-            input: get(nlpOptions, 'options.storage.options.input'),
-            intent: get(nlpOptions, 'options.storage.options.intent'),
-            entities: get(nlpOptions, 'options.storage.options.entities', {})
+      if (nlpOptions.options) {
+        this.options = {
+          service: get(nlpOptions, 'options.service', null),
+          intents: get(nlpOptions, 'options.intents', []),
+          storage: {
+            active: get(nlpOptions, 'options.storage.active')
           }
+        };
+        if (get(nlpOptions, 'options.storage.options')) {
+          this.options.storage.options = {
+            input: get(nlpOptions, 'options.storage.options.input', null),
+            intent: get(nlpOptions, 'options.storage.options.intent', null),
+            entities: get(nlpOptions, 'options.storage.options.entities', {})
+          };
         }
-      };
+      }
     }
   }
 }

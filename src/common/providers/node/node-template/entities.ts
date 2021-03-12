@@ -53,10 +53,10 @@ export class QuickReplyElement {
   constructor(element?: any) {
     if (element) {
       this.contentType = element.contentType;
-      this.title = element.title;
-      this.targetNode = element.targetNode;
-      this.imageUrl = element.imageUrl;
-      this.operations = element.operations;
+      if (element.title) this.title = element.title;
+      if (element.targetNode) this.targetNode = element.targetNode;
+      if (element.imageUrl) this.imageUrl = element.imageUrl;
+      if (element.operations) this.operations = element.operations;
     }
   }
 }
@@ -106,19 +106,19 @@ export class ButtonElement
 
   constructor(element?: any) {
     if (element) {
-      this.type = element.type;
-      this.title = element.title;
-      this.targetNode = element.targetNode;
-      this.operations = element.operations;
-      this.url = element.url;
-      this.openNewTab = element.openNewTab;
-      this.messengerExtensions = element.messengerExtensions;
-      this.webviewHeightRatio = element.webviewHeightRatio;
-      this.service = element.service;
-      this.targetNodeLoginSuccess = element.targetNodeLoginSuccess;
-      this.targetNodeLoginFailure = element.targetNodeLoginFailure;
-      this.dataProfileKey = element.dataProfileKey;
-      this.phoneNumber = element.phoneNumber;
+      if (element.type) this.type = element.type;
+      if (element.title) this.title = element.title;
+      if (element.targetNode) this.targetNode = element.targetNode;
+      if (element.operations) this.operations = element.operations;
+      if (element.url) this.url = element.url;
+      if (element.openNewTab) this.openNewTab = element.openNewTab;
+      if (element.messengerExtensions) this.messengerExtensions = element.messengerExtensions;
+      if (element.webviewHeightRatio) this.webviewHeightRatio = element.webviewHeightRatio;
+      if (element.service) this.service = element.service;
+      if (element.targetNodeLoginSuccess) this.targetNodeLoginSuccess = element.targetNodeLoginSuccess;
+      if (element.targetNodeLoginFailure) this.targetNodeLoginFailure = element.targetNodeLoginFailure;
+      if (element.dataProfileKey) this.dataProfileKey = element.dataProfileKey;
+      if (element.phoneNumber) this.phoneNumber = element.phoneNumber;
     }
   }
 }
@@ -129,7 +129,7 @@ export class TemplateButtons {
 
   constructor(template: any) {
     if (template) {
-      this.text = template.text;
+      if (template.text) this.text = template.text;
       if (template.buttons) {
         this.buttons = template.buttons.map((button: any) => new ButtonElement(button));
       }
@@ -149,7 +149,7 @@ export class MediaElement {
   constructor(element?: any) {
     if (element) {
       this.mediaType = element.mediaType;
-      this.url = element.url;
+      if (element.url) this.url = element.url;
       if (element.buttons) this.buttons = element.buttons.map((button: any) => new ButtonElement(button));
     }
   }
@@ -161,7 +161,7 @@ export class TemplateMedia {
 
   constructor(template?: any) {
     if (template) {
-      this.intro = template.intro;
+      if (template.intro) this.intro = template.intro;
       this.elements = (template.elements || []).map((element: any) => new MediaElement(element));
     }
   }
@@ -181,9 +181,9 @@ export class GenericElement {
   constructor(element?: any) {
     if (element) {
       this.title = element.title;
-      this.subtitle = element.subtitle;
-      this.imageUrl = element.imageUrl;
-      this.defaultAction = new ButtonElement(element.defaultAction);
+      if (element.subtitle) this.subtitle = element.subtitle;
+      if (element.imageUrl) this.imageUrl = element.imageUrl;
+      if (element.defaultAction) this.defaultAction = new ButtonElement(element.defaultAction);
       if (element.buttons) {
         this.buttons = element.buttons.map((button: any) => new ButtonElement(button));
       }
@@ -202,11 +202,11 @@ export class TemplateCarrousel implements TemplateCarrouselAuto, TemplateCarrous
 
   constructor(template?: any) {
     if (template) {
-      this.intro = template.intro;
-      this.size = template.size;
-      this.feedType = template.feedType;
-      this.autoOptions = template.autoOptions;
-      this.elements = template.elements;
+      if (template.intro) this.intro = template.intro;
+      if (template.size) this.size = template.size;
+      if (template.feedType) this.feedType = template.feedType;
+      if (template.autoOptions) this.autoOptions = template.autoOptions;
+      if (template.elements) this.elements = template.elements;
     }
   }
 }
@@ -223,10 +223,10 @@ export class TemplateList implements TemplateListAuto, TemplateListManual {
   constructor(template?: any) {
     if (template) {
       this.feedType = template.feedType;
-      this.intro = template.intro;
-      this.autoOptions = template.autoOptions;
-      this.elements = template.elements;
-      this.buttons = template.buttons;
+      if (template.intro) this.intro = template.intro;
+      if (template.autoOptions) this.autoOptions = template.autoOptions;
+      if (template.elements) this.elements = template.elements;
+      if (template.buttons) this.buttons = template.buttons;
     }
   }
 }
@@ -247,10 +247,10 @@ export class ReceiptElement {
     if (element) {
       this.title = element.title;
       this.price = element.price;
-      this.subtitle = element.subtitle;
-      this.quantity = element.quantity;
-      this.currency = element.currency;
-      this.imageUrl = element.imageUrl;
+      if (element.subtitle) this.subtitle = element.subtitle;
+      if (element.quantity) this.quantity = element.quantity;
+      if (element.currency) this.currency = element.currency;
+      if (element.imageUrl) this.imageUrl = element.imageUrl;
     }
   }
 }
@@ -277,30 +277,30 @@ export class TemplateReceipt {
 
   constructor(template?: any) {
     if (template) {
-      this.recipientName = template.recipientName;
-      this.orderNumber = template.orderNumber;
-      this.currency = template.currency;
-      this.paymentMethod = template.paymentMethod;
-      this.orderUrl = template.orderUrl;
-      this.timestamp = template.timestamp;
+      if (template.recipientName) this.recipientName = template.recipientName;
+      if (template.orderNumber) this.orderNumber = template.orderNumber;
+      if (template.currency) this.currency = template.currency;
+      if (template.paymentMethod) this.paymentMethod = template.paymentMethod;
+      if (template.orderUrl) this.orderUrl = template.orderUrl;
+      if (template.timestamp) this.timestamp = template.timestamp;
       if (template.elements) {
         this.elements = template.elements.map((element: any) => new ReceiptElement(element));
       }
       if (template.address) {
         this.address = {};
-        this.address.street1 = template.address.street1;
-        this.address.street2 = template.address.street2;
-        this.address.city = template.address.city;
-        this.address.postalCode = template.address.postalCode;
-        this.address.state = template.address.state;
-        this.address.country = template.address.country;
+        if (template.address.street1) this.address.street1 = template.address.street1;
+        if (template.address.street2) this.address.street2 = template.address.street2;
+        if (template.address.city) this.address.city = template.address.city;
+        if (template.address.postalCode) this.address.postalCode = template.address.postalCode;
+        if (template.address.state) this.address.state = template.address.state;
+        if (template.address.country) this.address.country = template.address.country;
       }
       if (template.summary) {
         this.summary = {};
-        this.summary.subtotal = template.summary.subtotal;
-        this.summary.shippingCost = template.summary.shippingCost;
-        this.summary.totalTax = template.summary.totalTax;
-        this.summary.totalCost = template.summary.totalCost;
+        if (template.summary.subtotal) this.summary.subtotal = template.summary.subtotal;
+        if (template.summary.shippingCost) this.summary.shippingCost = template.summary.shippingCost;
+        if (template.summary.totalTax) this.summary.totalTax = template.summary.totalTax;
+        if (template.summary.totalCost) this.summary.totalCost = template.summary.totalCost;
       }
       if (template.adjustments) {
         this.adjustments = template.adjustments.map((adj: any) => ({

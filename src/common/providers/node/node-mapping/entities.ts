@@ -32,27 +32,31 @@ export class MappingDataInput {
       };
       this.nlp = new NlpOptions(mappingDataInput.nlp);
       this.saveData = {
-        active: get(mappingDataInput, 'saveData.active'),
-        options: {
-          key: get(mappingDataInput, 'saveData.options.key'),
-          targetNode: get(mappingDataInput, 'saveData.options.targetNode'),
-          formatCheck: get(mappingDataInput, 'saveData.options.formatCheck'),
-          customFormat: get(mappingDataInput, 'saveData.options.customFormat'),
+        active: get(mappingDataInput, 'saveData.active')
+      };
+      if (get(mappingDataInput, 'saveData.options')) {
+        this.saveData.options = {
+          key: get(mappingDataInput, 'saveData.options.key', null),
+          targetNode: get(mappingDataInput, 'saveData.options.targetNode', null),
+          formatCheck: get(mappingDataInput, 'saveData.options.formatCheck', null),
+          customFormat: get(mappingDataInput, 'saveData.options.customFormat', null),
           dateDisplay: get(mappingDataInput, 'saveData.options.dateDisplay', 'asInput'),
           dateInput: get(mappingDataInput, 'saveData.options.dateInput', 'dd-mm-yyyy'),
           dateOutput: get(mappingDataInput, 'saveData.options.dateOutput', 'iso8601'),
-          targetNodeIfCheckFails: get(mappingDataInput, 'saveData.options.targetNodeIfCheckFails')
-        }
-      };
+          targetNodeIfCheckFails: get(mappingDataInput, 'saveData.options.targetNodeIfCheckFails', null)
+        };
+      }
       this.fallback = {
-        active: get(mappingDataInput, 'fallback.active'),
-        options: {
-          type: get(mappingDataInput, 'fallback.options.type'),
-          targetNode: get(mappingDataInput, 'fallback.options.targetNode'),
-          message: get(mappingDataInput, 'fallback.options.message'),
-          url: get(mappingDataInput, 'fallback.options.url')
-        }
+        active: get(mappingDataInput, 'fallback.active')
       };
+      if (get(mappingDataInput, 'fallback.options')) {
+        this.fallback.options = {
+          type: get(mappingDataInput, 'fallback.options.type', null),
+          targetNode: get(mappingDataInput, 'fallback.options.targetNode', null),
+          message: get(mappingDataInput, 'fallback.options.message', null),
+          url: get(mappingDataInput, 'fallback.options.url', null)
+        };
+      }
     }
   }
 }
@@ -72,11 +76,13 @@ export class MappingGoToNode {
   constructor(mappingGoToNode?: any) {
     if (mappingGoToNode) {
       this.active = get(mappingGoToNode, 'active');
-      this.options = {
-        targetNode: get(mappingGoToNode, 'options.targetNode'),
-        waitForInput: get(mappingGoToNode, 'options.waitForInput'),
-        operations: get(mappingGoToNode, 'options.operations', [])
-      };
+      if (mappingGoToNode.options) {
+        this.options = {
+          targetNode: get(mappingGoToNode, 'options.targetNode', null),
+          waitForInput: get(mappingGoToNode, 'options.waitForInput', null),
+          operations: get(mappingGoToNode, 'options.operations', [])
+        };
+      }
     }
   }
 }
@@ -97,33 +103,37 @@ export class MappingSwitch {
         comparisons: get(switchOptions, 'assertEqual.comparisons', [])
       };
       this.performOperations = {
-        active: get(switchOptions, 'performOperations.active'),
-        options: {
+        active: get(switchOptions, 'performOperations.active')
+      };
+      if (get(switchOptions, 'performOperations.options')) {
+        this.performOperations.options = {
           operations: get(switchOptions, 'performOperations.options.operations', []),
-          targetNode: get(switchOptions, 'performOperations.options.targetNode')
-        }
-      };
+          targetNode: get(switchOptions, 'performOperations.options.targetNode', null)
+        };
+      }
       this.sendToExternalApi = {
-        active: get(switchOptions, 'sendToExternalApi.active'),
-        options: {
-          headers: get(switchOptions, 'sendToExternalApi.options.headers'),
-          body: get(switchOptions, 'sendToExternalApi.options.body'),
-          bodyType: get(switchOptions, 'sendToExternalApi.options.bodyType'),
-          data: {
-            active: get(switchOptions, 'sendToExternalApi.options.data.active'),
-            arrayPath: get(switchOptions, 'sendToExternalApi.options.data.arrayPath'),
-            key: get(switchOptions, 'sendToExternalApi.options.data.key'),
-            mapping: get(switchOptions, 'sendToExternalApi.options.data.mapping'),
-            type: get(switchOptions, 'sendToExternalApi.options.data.type')
-          },
-          fallbackNode: get(switchOptions, 'sendToExternalApi.options.fallbackNode'),
-          isJSON: get(switchOptions, 'sendToExternalApi.options.isJSON'),
-          method: get(switchOptions, 'sendToExternalApi.options.method'),
-          targetNode: get(switchOptions, 'sendToExternalApi.options.targetNode'),
-          timeout: get(switchOptions, 'sendToExternalApi.options.timeout'),
-          url: get(switchOptions, 'sendToExternalApi.options.url')
-        }
+        active: get(switchOptions, 'sendToExternalApi.active')
       };
+      if (get(switchOptions, 'sendToExternalApi.options')) {
+        this.sendToExternalApi.options = {
+          headers: get(switchOptions, 'sendToExternalApi.options.headers', null),
+          body: get(switchOptions, 'sendToExternalApi.options.body', null),
+          bodyType: get(switchOptions, 'sendToExternalApi.options.bodyType', null),
+          data: {
+            active: get(switchOptions, 'sendToExternalApi.options.data.active', null),
+            arrayPath: get(switchOptions, 'sendToExternalApi.options.data.arrayPath', null),
+            key: get(switchOptions, 'sendToExternalApi.options.data.key', null),
+            mapping: get(switchOptions, 'sendToExternalApi.options.data.mapping', null),
+            type: get(switchOptions, 'sendToExternalApi.options.data.type', null)
+          },
+          fallbackNode: get(switchOptions, 'sendToExternalApi.options.fallbackNode', null),
+          isJSON: get(switchOptions, 'sendToExternalApi.options.isJSON', null),
+          method: get(switchOptions, 'sendToExternalApi.options.method', null),
+          targetNode: get(switchOptions, 'sendToExternalApi.options.targetNode', null),
+          timeout: get(switchOptions, 'sendToExternalApi.options.timeout', null),
+          url: get(switchOptions, 'sendToExternalApi.options.url', null)
+        };
+      }
     }
   }
 }

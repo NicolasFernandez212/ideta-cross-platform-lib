@@ -1,4 +1,8 @@
+import { MappingDataInput } from './entities';
+
 export type MappingType = 'data-input' | 'go-to-node' | 'switch';
+
+export type DataInputType = keyof MappingDataInput;
 
 export type FormatCheckType = 'none' | 'email' | 'phone' | 'date' | 'number' | 'custom' | 'country' | 'nationality';
 
