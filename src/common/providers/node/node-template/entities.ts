@@ -71,10 +71,10 @@ export class TemplateQuickReplies implements TemplateQuickRepliesAuto, TemplateQ
 
   constructor(template?: any) {
     if (template) {
-      this.text = template.text;
-      this.feedType = template.feedType;
-      this.autoOptions = template.autoOptions;
-      this.quickReplies = template.quickReplies;
+      if (template.text) this.text = template.text;
+      if (template.feedType) this.feedType = template.feedType;
+      if (template.autoOptions) this.autoOptions = template.autoOptions;
+      if (template.quickReplies) this.quickReplies = template.quickReplies;
     }
   }
 }
