@@ -244,26 +244,30 @@ export class MappingOptions {
   constructor(mappingOptions?: any) {
     if (mappingOptions) {
       this.behaviorMedia = {
-        active: get(mappingOptions, 'behaviorMedia.active'),
-        options: {
-          type: get(mappingOptions, 'behaviorMedia.options.type'),
-          message: get(mappingOptions, 'behaviorMedia.options.message'),
-          targetNode: get(mappingOptions, 'behaviorMedia.options.targetNode'),
-          url: get(mappingOptions, 'behaviorMedia.options.url')
-        }
+        active: get(mappingOptions, 'behaviorMedia.active')
       };
+      if (get(mappingOptions, 'behaviorMedia.options')) {
+        this.behaviorMedia.options = {
+          type: get(mappingOptions, 'behaviorMedia.options.type', null),
+          message: get(mappingOptions, 'behaviorMedia.options.message', null),
+          targetNode: get(mappingOptions, 'behaviorMedia.options.targetNode', null),
+          url: get(mappingOptions, 'behaviorMedia.options.url', null)
+        };
+      }
 
       this.behaviorGeoloc = {
-        active: get(mappingOptions, 'behaviorGeoloc.active'),
-        options: {
-          type: get(mappingOptions, 'behaviorGeoloc.options.type'),
-          message: get(mappingOptions, 'behaviorGeoloc.options.message'),
-          targetNode: get(mappingOptions, 'behaviorGeoloc.options.targetNode'),
-          url: get(mappingOptions, 'behaviorGeoloc.options.url')
-        }
+        active: get(mappingOptions, 'behaviorGeoloc.active')
       };
+      if (get(mappingOptions, 'behaviorGeoloc.options')) {
+        this.behaviorGeoloc.options = {
+          type: get(mappingOptions, 'behaviorGeoloc.options.type', null),
+          message: get(mappingOptions, 'behaviorGeoloc.options.message', null),
+          targetNode: get(mappingOptions, 'behaviorGeoloc.options.targetNode', null),
+          url: get(mappingOptions, 'behaviorGeoloc.options.url', null)
+        };
+      }
 
-      this.isSystemNode = mappingOptions.isSystemNode;
+      if (mappingOptions.isSystemNode) this.isSystemNode = mappingOptions.isSystemNode;
     }
   }
 }
