@@ -9,11 +9,10 @@ import { DataStoreElem } from './interfaces';
 export class DataStore {
   [key: string]: DataStoreElem;
 
-  constructor(store?: any) {
+  constructor(store?: any, isKeyBased?: boolean) {
     if (store) {
-      Object.keys(store).reduce((acc: any, curr: string) => {
-        this[store[curr].key] = { ...store[curr], id: curr };
-        return acc;
+      Object.keys(store).forEach((dataVarId: string) => {
+        this[isKeyBased ? store[dataVarId].key : dataVarId] = { ...store[dataVarId], id: dataVarId };
       });
     }
   }

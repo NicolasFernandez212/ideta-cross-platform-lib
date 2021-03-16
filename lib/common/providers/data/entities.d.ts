@@ -7,5 +7,5 @@ import { DataStoreElem } from './interfaces';
  */
 export declare class DataStore {
     [key: string]: DataStoreElem;
-    constructor(store?: any);
+    constructor(store?: any, isKeyBased?: boolean);
 }
