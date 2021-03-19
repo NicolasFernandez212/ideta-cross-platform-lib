@@ -40,6 +40,7 @@ export {
 export {
   AttachmentType,
   BackgroundType,
+  BotTypingBehavior,
   Channel,
   DeployableChannel,
   DisplayContext,

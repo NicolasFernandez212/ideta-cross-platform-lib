@@ -49,3 +49,4 @@ export declare type BackgroundType = 'url' | 'color';
  */
 export declare type DisplayContext = 'preview' | 'sandbox' | 'web' | 'cockpit' | 'embedded';
 export declare type SendButtonAppearance = 'plain' | 'light' | 'share' | 'text' | 'textPlain' | 'textLight' | 'textShare';
+export declare type BotTypingBehavior = 'none' | 'start' | 'group' | 'single';

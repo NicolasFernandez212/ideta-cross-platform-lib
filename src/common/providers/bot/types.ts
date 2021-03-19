@@ -57,4 +57,6 @@ export type BackgroundType = 'url' | 'color';
  */
 export type DisplayContext = 'preview' | 'sandbox' | 'web' | 'cockpit' | 'embedded';
 
-export type SendButtonAppearance = 'plain' | 'light' | 'share' |  'text' | 'textPlain' | 'textLight' | 'textShare';
+export type SendButtonAppearance = 'plain' | 'light' | 'share' | 'text' | 'textPlain' | 'textLight' | 'textShare';
+
+export type BotTypingBehavior = 'none' | 'start' | 'group' | 'single';

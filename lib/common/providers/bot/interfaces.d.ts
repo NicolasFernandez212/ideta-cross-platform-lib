@@ -1,4 +1,4 @@
-import { NlpServiceStatus, DisplayOptionName, BackgroundType, DisplayContext, SendButtonAppearance } from './types';
+import { NlpServiceStatus, DisplayOptionName, BackgroundType, DisplayContext, SendButtonAppearance, BotTypingBehavior } from './types';
 import { LayoutSize } from '../node/node-template/types';
 import { ButtonElement } from '../node/node-template/entities';
 /**
@@ -367,6 +367,7 @@ export interface ChatOption extends DisplayOption {
         deleteOnReload: boolean;
         deleteOnRestart: boolean;
         showTypingVisual: boolean;
+        botTypingVisual: BotTypingBehavior;
         showMessageDate: boolean;
         showMessageRead: boolean;
         setInactiveAfter: number;
