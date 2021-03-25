@@ -60,7 +60,6 @@ export class User {
       case 'disconnectPage':
       case 'isWorkplaceAppSubscribed':
       case 'subscribeWorkplaceApp':
-      case 'fetchAgents':
         return !!(this.bots && this.bots[botId]); // One of user's bots
       case 'duplicateBot':
       case 'deleteBot':

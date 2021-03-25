@@ -6,4 +6,10 @@ export {
   Intent,
   IntentParameter
 } from '../providers/ai/dialogflow/interfaces';
-export { AutoExpansionMode, EntityKind, ExampleType, WebhookState } from '../providers/ai/dialogflow/types';
+export {
+  AutoExpansionMode,
+  DialogflowLocation,
+  EntityKind,
+  ExampleType,
+  WebhookState
+} from '../providers/ai/dialogflow/types';

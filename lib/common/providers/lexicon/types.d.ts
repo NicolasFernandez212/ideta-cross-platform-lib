@@ -1,4 +1,5 @@
-import { DialogflowCredentials, LuisCredentials } from './interfaces';
+import { DialogflowCredentials } from './entities';
+import { LuisCredentials } from './interfaces';
 /**
  * Generic model of all credentials in base
  * Note : this interface must be updated when a new service is added
@@ -12,3 +13,4 @@ export declare type LexiconCredentials = DialogflowCredentials | LuisCredentials
  * Representation : Front, Back, CF
  */
 export declare type NlpService = 'dialogflow' | 'luis';
+export declare type DialogflowLoginMethod = 'oauth' | 'account';

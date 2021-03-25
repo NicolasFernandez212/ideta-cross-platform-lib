@@ -1,9 +1,10 @@
 import { get } from 'lodash';
 
 import { Intent, Entity, Example } from './interfaces';
-import { NlpService } from './types';
+import { DialogflowLoginMethod, NlpService } from './types';
 
 import { NlpTrigger, SaveNlpOptions } from '../node/node-mapping/interfaces';
+import { DialogflowLocation } from '../ai/dialogflow/types';
 
 export class Lexicon {
   public intents: Intent[];
@@ -54,5 +55,32 @@ export class NlpOptions {
         }
       }
     }
+  }
+}
+
+export class DialogflowCredentials {
+  public access_token?: string;
+  public refresh_token?: string;
+  public private_key?: string;
+  public client_email?: string;
+  public project_id?: string;
+  public project_location?: DialogflowLocation;
+
+  constructor(credentials: any) {
+    if (credentials) {
+      if (credentials.access_token) this.access_token = credentials.access_token;
+      if (credentials.refresh_token) this.refresh_token = credentials.refresh_token;
+      if (credentials.private_key) this.private_key = credentials.private_key;
+      if (credentials.client_email) this.client_email = credentials.client_email;
+      if (credentials.project_id) this.project_id = credentials.project_id;
+      this.project_location = credentials.project_location || 'us';
+    }
+  }
+
+  loginMethod(checkProjectId?: boolean): DialogflowLoginMethod {
+    if (checkProjectId && !this.project_id) return null;
+    if (!!this.access_token && !!this.refresh_token) return 'oauth';
+    if (!!this.client_email && !!this.private_key) return 'account';
+    return null;
   }
 }

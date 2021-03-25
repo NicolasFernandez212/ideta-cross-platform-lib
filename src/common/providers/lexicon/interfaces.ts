@@ -39,18 +39,10 @@ export interface LexiconDiffItem {
   nbLocal: number;
 }
 
-export interface DialogflowCredentials {
-  access_token?: string;
-  refresh_token?: string;
-  private_key?: string;
-  client_email?: string;
-  project_id?: string;
-}
-
 export interface LuisCredentials {
-  appId: string;
-  appVersion: string;
-  authKey: string;
+  appId?: string;
+  appVersion?: string;
+  authKey?: string;
   endpointKey?: string;
-  useAuthAsEndpointKey: boolean;
+  useAuthAsEndpointKey?: boolean;
 }

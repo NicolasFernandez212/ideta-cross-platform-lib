@@ -1,6 +1,7 @@
 import { Intent, Entity, Example } from './interfaces';
-import { NlpService } from './types';
+import { DialogflowLoginMethod, NlpService } from './types';
 import { NlpTrigger, SaveNlpOptions } from '../node/node-mapping/interfaces';
+import { DialogflowLocation } from '../ai/dialogflow/types';
 export declare class Lexicon {
     intents: Intent[];
     entities: Entity[];
@@ -15,4 +16,14 @@ export declare class NlpOptions {
         storage?: SaveNlpOptions;
     };
     constructor(nlpOptions?: any);
+}
+export declare class DialogflowCredentials {
+    access_token?: string;
+    refresh_token?: string;
+    private_key?: string;
+    client_email?: string;
+    project_id?: string;
+    project_location?: DialogflowLocation;
+    constructor(credentials: any);
+    loginMethod(checkProjectId?: boolean): DialogflowLoginMethod;
 }

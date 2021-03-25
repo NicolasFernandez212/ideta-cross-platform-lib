@@ -8,3 +8,8 @@ export type EntityKind = 'KIND_UNSPECIFIED' | 'KIND_MAP' | 'KIND_LIST';
 export type AutoExpansionMode = 'AUTO_EXPANSION_MODE_UNSPECIFIED' | 'AUTO_EXPANSION_MODE_DEFAULT';
 
 export type ExampleType = 'TYPE_UNSPECIFIED' | 'EXAMPLE';
+
+/**
+ * See location informations: https://cloud.google.com/dialogflow/es/docs/how/region
+ */
+export type DialogflowLocation = 'us' | 'europe-west1' | 'europe-west2' | 'australia-southeast1' | 'asia-northeast1';
