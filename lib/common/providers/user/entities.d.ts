@@ -1,5 +1,5 @@
 import { FacebookUserInfos, UserEntry } from './interfaces';
-import { AvailableLang, UserStatus } from './types';
+import { AvailableLang, UserAction, UserStatus } from './types';
 import { PlanId } from '../billing/types';
 export declare class User {
     id: string;
@@ -21,5 +21,5 @@ export declare class User {
     settings?: any;
     status?: UserStatus;
     constructor(user?: Partial<User>);
-    can(action: string, botId: string): boolean;
+    can(action: UserAction, botId: string): boolean;
 }

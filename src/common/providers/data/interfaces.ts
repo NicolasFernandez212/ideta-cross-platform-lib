@@ -2,7 +2,6 @@ import { DataScope, DataStoreElemArrayType, DataStoreElemKeyType, DataStoreElemT
 
 import { AsyncAction } from '../node/node-mapping/entities';
 
-
 export interface DataStoreElem {
   id?: string;
   key?: string;
@@ -63,7 +62,7 @@ export interface DataRichSegment {
 
 export interface DataAsyncAction {
   trigger: 'update' | 'write';
-  action: AsyncAction; // ###R BackgroundAction
+  action: AsyncAction;
 }
 
 export interface ParsedAddress {
