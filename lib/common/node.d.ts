@@ -1,6 +1,6 @@
 export { BotNode, DataBoundedOperationOptions, DataComparison, DataComposedOperationOptions, DataOperation, DataSearchOperationOptions } from './providers/node/entities';
 export { ComparisonAction } from './providers/node/interfaces';
-export { ComparisonActionType, ComparisonType, OperationOptions, OperationType } from './providers/node/types';
+export { ComparisonActionType, ComparisonType, EmulatedNodeId, OperationOptions, OperationType } from './providers/node/types';
 export { ButtonElement, GenericElement, MediaElement, NodeTemplate, OpenGraphElement, QuickReplyElement, ReceiptElement, TemplateButtons, TemplateCarrousel, TemplateList, TemplateMedia, TemplateOpenGraph, TemplateQuickReplies, TemplateReceipt, TemplateText } from './providers/node/node-template/entities';
 export { ButtonElementCall, ButtonElementLogin, ButtonElementPostback, ButtonElementShare, ButtonElementUrl, GenericAutoOptions, QuickRepliesAutoOptions, TemplateCarrouselAuto, TemplateCarrouselBase, TemplateCarrouselManual, TemplateGenericAuto, TemplateGenericManual, TemplateListAuto, TemplateListBase, TemplateListManual, TemplateQuickRepliesBase, TemplateQuickRepliesAuto, TemplateQuickRepliesManual } from './providers/node/node-template/interfaces';
 export { AuthorizedTypes, ButtonLoginService, ButtonUrlWebviewType, LayoutSize, MediaType, QuickReplyContentType, Template, TemplateButtonType, TemplateDefaultActionType, TemplateFeedType, TemplateType } from './providers/node/node-template/types';

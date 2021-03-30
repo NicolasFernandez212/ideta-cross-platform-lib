@@ -3,3 +3,4 @@ export declare type OperationType = 'set' | 'delete' | 'erase' | 'dateNow' | 'co
 export declare type OperationOptions = DataBoundedOperationOptions | DataComposedOperationOptions | DataSearchOperationOptions;
 export declare type ComparisonType = '!' | '.!' | '==' | '<>' | '<' | '<=' | '>' | '>=' | '^$';
 export declare type ComparisonActionType = 'exit' | 'next';
+export declare type EmulatedNodeId = 'typing' | 'admin_to_user-node' | 'stateless-node' | 'bot-not-found' | 'lost-track';

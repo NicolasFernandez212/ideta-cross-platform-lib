@@ -7,7 +7,13 @@ export {
   DataSearchOperationOptions
 } from './providers/node/entities';
 export { ComparisonAction } from './providers/node/interfaces';
-export { ComparisonActionType, ComparisonType, OperationOptions, OperationType } from './providers/node/types';
+export {
+  ComparisonActionType,
+  ComparisonType,
+  EmulatedNodeId,
+  OperationOptions,
+  OperationType
+} from './providers/node/types';
 
 /*
  * Exports from  NLP-TEMPLATE

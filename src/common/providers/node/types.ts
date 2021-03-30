@@ -46,3 +46,5 @@ export type OperationOptions = DataBoundedOperationOptions | DataComposedOperati
 export type ComparisonType = '!' | '.!' | '==' | '<>' | '<' | '<=' | '>' | '>=' | '^$';
 
 export type ComparisonActionType = 'exit' | 'next';
+
+export type EmulatedNodeId = 'typing' | 'admin_to_user-node' | 'stateless-node' | 'bot-not-found' | 'lost-track';
