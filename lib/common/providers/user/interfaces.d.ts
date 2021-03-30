@@ -4,6 +4,7 @@ export interface UserEntry {
     role: UserRole;
 }
 export interface FacebookUserInfos {
+    accessToken?: string;
     email: string;
     first_name: string;
     granted_scopes: string[];
