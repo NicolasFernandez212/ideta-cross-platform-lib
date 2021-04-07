@@ -37,13 +37,13 @@ export class NlpOptions {
 
   constructor(nlpOptions?: any) {
     if (nlpOptions) {
-      this.active = nlpOptions.active;
+      this.active = get(nlpOptions, 'active', null);
       if (nlpOptions.options) {
         this.options = {
           service: get(nlpOptions, 'options.service', null),
           intents: get(nlpOptions, 'options.intents', []),
           storage: {
-            active: get(nlpOptions, 'options.storage.active')
+            active: get(nlpOptions, 'options.storage.active', null)
           }
         };
         if (get(nlpOptions, 'options.storage.options')) {

@@ -27,12 +27,12 @@ export class MappingDataInput {
   constructor(mappingDataInput?: any) {
     if (mappingDataInput) {
       this.triggers = {
-        active: get(mappingDataInput, 'triggers.active'),
+        active: get(mappingDataInput, 'triggers.active', null),
         options: get(mappingDataInput, 'triggers.options', [])
       };
       this.nlp = new NlpOptions(mappingDataInput.nlp);
       this.saveData = {
-        active: get(mappingDataInput, 'saveData.active')
+        active: get(mappingDataInput, 'saveData.active', null)
       };
       if (get(mappingDataInput, 'saveData.options')) {
         this.saveData.options = {
@@ -47,7 +47,7 @@ export class MappingDataInput {
         };
       }
       this.fallback = {
-        active: get(mappingDataInput, 'fallback.active')
+        active: get(mappingDataInput, 'fallback.active', null)
       };
       if (get(mappingDataInput, 'fallback.options')) {
         this.fallback.options = {
@@ -75,7 +75,7 @@ export class MappingGoToNode {
 
   constructor(mappingGoToNode?: any) {
     if (mappingGoToNode) {
-      this.active = get(mappingGoToNode, 'active');
+      this.active = get(mappingGoToNode, 'active', null);
       if (mappingGoToNode.options) {
         this.options = {
           targetNode: get(mappingGoToNode, 'options.targetNode', null),
@@ -99,11 +99,11 @@ export class MappingSwitch {
   constructor(switchOptions?: any) {
     if (switchOptions) {
       this.assertEqual = {
-        active: get(switchOptions, 'assertEqual.active'),
+        active: get(switchOptions, 'assertEqual.active', null),
         comparisons: get(switchOptions, 'assertEqual.comparisons', [])
       };
       this.performOperations = {
-        active: get(switchOptions, 'performOperations.active')
+        active: get(switchOptions, 'performOperations.active', null)
       };
       if (get(switchOptions, 'performOperations.options')) {
         this.performOperations.options = {
@@ -112,7 +112,7 @@ export class MappingSwitch {
         };
       }
       this.sendToExternalApi = {
-        active: get(switchOptions, 'sendToExternalApi.active')
+        active: get(switchOptions, 'sendToExternalApi.active', null)
       };
       if (get(switchOptions, 'sendToExternalApi.options')) {
         this.sendToExternalApi.options = {
@@ -244,7 +244,7 @@ export class MappingOptions {
   constructor(mappingOptions?: any) {
     if (mappingOptions) {
       this.behaviorMedia = {
-        active: get(mappingOptions, 'behaviorMedia.active')
+        active: get(mappingOptions, 'behaviorMedia.active', null)
       };
       if (get(mappingOptions, 'behaviorMedia.options')) {
         this.behaviorMedia.options = {
@@ -256,7 +256,7 @@ export class MappingOptions {
       }
 
       this.behaviorGeoloc = {
-        active: get(mappingOptions, 'behaviorGeoloc.active')
+        active: get(mappingOptions, 'behaviorGeoloc.active', null)
       };
       if (get(mappingOptions, 'behaviorGeoloc.options')) {
         this.behaviorGeoloc.options = {
@@ -288,9 +288,17 @@ export class NodeMapping {
     if (mapping) {
       this.type = mapping.type;
 
-      if (this.type === 'data-input') this.dataInput = new MappingDataInput(mapping.dataInput);
-      else if (this.type === 'go-to-node') this.goToNode = new MappingGoToNode(mapping.goToNode);
-      else if (this.type === 'switch') this.switch = new MappingSwitch(mapping.switch);
+      switch (this.type) {
+        case 'data-input':
+          this.dataInput = new MappingDataInput(mapping.dataInput);
+          break;
+        case 'go-to-node':
+          this.goToNode = new MappingGoToNode(mapping.goToNode);
+          break;
+        case 'switch':
+          this.switch = new MappingSwitch(mapping.switch);
+          break;
+      }
 
       this.actions = get(mapping, 'actions', []).map((action: any) => new MappingAsyncAction(action));
       this.options = new MappingOptions(mapping.options);

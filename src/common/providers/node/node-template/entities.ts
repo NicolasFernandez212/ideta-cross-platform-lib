@@ -363,22 +363,31 @@ export class NodeTemplate {
        * to create a message in the database.
        */
       if (template.parsedTemplate) this.parsedTemplate = template.parsedTemplate;
-      if (this.type === 'text') {
-        this.templateText = new TemplateText(template.templateText);
-      } else if (this.type === 'quick-replies') {
-        this.templateQuickReplies = new TemplateQuickReplies(template.templateQuickReplies);
-      } else if (this.type === 'button') {
-        this.templateButton = new TemplateButtons(template.templateButton);
-      } else if (this.type === 'media') {
-        this.templateMedia = new TemplateMedia(template.templateMedia);
-      } else if (this.type === 'list') {
-        this.templateList = new TemplateList(template.templateList);
-      } else if (this.type === 'generic') {
-        this.templateGeneric = new TemplateCarrousel(template.templateGeneric);
-      } else if (this.type === 'receipt') {
-        this.templateReceipt = new TemplateReceipt(template.templateReceipt);
-      } else if (this.type === 'open-graph') {
-        this.templateOpenGraph = new TemplateOpenGraph(template.templateOpenGraph);
+      switch (this.type) {
+        case 'text':
+          this.templateText = new TemplateText(template.templateText);
+          break;
+        case 'quick-replies':
+          this.templateQuickReplies = new TemplateQuickReplies(template.templateQuickReplies);
+          break;
+        case 'button':
+          this.templateButton = new TemplateButtons(template.templateButton);
+          break;
+        case 'media':
+          this.templateMedia = new TemplateMedia(template.templateMedia);
+          break;
+        case 'list':
+          this.templateList = new TemplateList(template.templateList);
+          break;
+        case 'generic':
+          this.templateGeneric = new TemplateCarrousel(template.templateGeneric);
+          break;
+        case 'receipt':
+          this.templateReceipt = new TemplateReceipt(template.templateReceipt);
+          break;
+        case 'open-graph':
+          this.templateOpenGraph = new TemplateOpenGraph(template.templateOpenGraph);
+          break;
       }
     }
   }
