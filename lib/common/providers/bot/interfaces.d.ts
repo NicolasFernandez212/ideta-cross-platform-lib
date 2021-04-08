@@ -137,6 +137,7 @@ export interface TwilioPageInfos {
     problemConnecting?: string;
     speechModel?: string;
     speechTimeout?: string;
+    waitingMessage?: string;
 }
 /**
  * Specified channel infos model for SMOOCH

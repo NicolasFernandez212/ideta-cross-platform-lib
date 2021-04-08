@@ -156,6 +156,7 @@ export interface TwilioPageInfos {
   problemConnecting?: string;
   speechModel?: string;
   speechTimeout?: string;
+  waitingMessage?: string;
 }
 
 /**
