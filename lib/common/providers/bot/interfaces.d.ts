@@ -138,6 +138,8 @@ export interface TwilioPageInfos {
     speechModel?: string;
     speechTimeout?: string;
     waitingMessage?: string;
+    lang?: string;
+    voice?: string;
 }
 /**
  * Specified channel infos model for SMOOCH

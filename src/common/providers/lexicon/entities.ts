@@ -77,7 +77,7 @@ export class DialogflowCredentials {
     }
   }
 
-  loginMethod(checkProjectId?: boolean): DialogflowLoginMethod {
+  public loginMethod(checkProjectId?: boolean): DialogflowLoginMethod {
     if (checkProjectId && !this.project_id) return null;
     if (!!this.access_token && !!this.refresh_token) return 'oauth';
     if (!!this.client_email && !!this.private_key) return 'account';
