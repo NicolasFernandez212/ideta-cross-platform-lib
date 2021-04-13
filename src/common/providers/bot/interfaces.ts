@@ -146,19 +146,24 @@ export interface TwilioChannelInfos extends ChannelInfos {
  */
 export interface TwilioPageInfos {
   id?: string;
-  accountSID?: string;
-  authToken?: string;
   flowId?: string;
   friendlyName?: string;
+  accountSID?: string;
+  authToken?: string;
   transferPhoneNumber?: string;
-  timeoutListening?: string;
-  problemInitiating?: string;
+  timeoutListening?: number;
   problemConnecting?: string;
-  speechModel?: string;
-  speechTimeout?: string;
+  problemInitiating?: string;
   waitingMessage?: string;
-  lang?: string;
+  speechTimeout?: number;
+  userLang?: string;
+  botLang?: string;
   voice?: string;
+  speechModel?: string;
+  numberDigits?: number;
+  stopGather?: boolean;
+  finishOnKey?: string;
+  profanityFilter?: boolean;
 }
 
 /**

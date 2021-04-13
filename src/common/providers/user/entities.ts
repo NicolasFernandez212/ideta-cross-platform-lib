@@ -51,6 +51,7 @@ export class User {
         return true;
       case 'connectPage':
       case 'connectSlack':
+      case 'connectTwilio':
       case 'deployBot':
       case 'disconnectPage':
       case 'exportLexicon':

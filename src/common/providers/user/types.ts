@@ -8,6 +8,7 @@ export type UserAction =
   | 'connectAutoReply'
   | 'connectPage'
   | 'connectSlack'
+  | 'connectTwilio'
   | 'createBot'
   | 'deleteBot'
   | 'deployBot'
