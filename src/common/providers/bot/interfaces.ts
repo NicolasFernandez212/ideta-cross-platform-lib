@@ -148,6 +148,7 @@ export interface TwilioPageInfos {
   id?: string;
   flowId?: string;
   friendlyName?: string;
+  numberSID?: string;
   accountSID?: string;
   authToken?: string;
   transferPhoneNumber?: string;
