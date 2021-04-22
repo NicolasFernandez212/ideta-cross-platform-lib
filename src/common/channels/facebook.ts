@@ -1,14 +1,24 @@
 export {
-  FacebookButton,
+  AccountLinkingUrl,
   FacebookPostbackButton,
   FacebookUrlButton,
+  GetStarted,
+  GreetingLocaleItem,
+  HomeUrl,
   Page,
   PageSummary,
-  ProfileAccountLinkingUrl,
-  ProfileGetStarted,
-  ProfileGreeting,
-  ProfileHomeUrl,
-  ProfilePersistentMenu,
-  Property
+  PersistentMenuButton,
+  PersistentMenuItem,
+  Property,
+  TargetAudience
 } from '../providers/channels/facebook/interfaces';
-export { MessengerProfileKey } from '../providers/channels/facebook/types';
+export {
+  Greeting,
+  PersistentMenu,
+  PersistentMenuButtonType,
+  PersistentMenuWebviewType,
+  TargetAudienceCustomType,
+  MessengerProfileKey,
+  TargetAudienceType,
+  WhitelistedDomains
+} from '../providers/channels/facebook/types';

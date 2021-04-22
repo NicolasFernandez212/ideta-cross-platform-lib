@@ -1,3 +1,4 @@
+import { PersistentMenuButtonType, PersistentMenuWebviewType, TargetAudienceType } from './types';
 export interface PageSummary {
     id: string;
     name: string;
@@ -18,46 +19,55 @@ export interface Page {
         };
     };
 }
-export interface ProfileAccountLinkingUrl {
+export interface AccountLinkingUrl {
     account_linking_url: string;
 }
-export interface ProfileGetStarted {
-    get_started: {
-        payload: string;
-    };
-}
-export interface ProfileGreeting {
-    greeting: {
-        locale: string;
-        text: string;
-    }[];
-}
-export interface ProfileHomeUrl {
-    home_url: {
-        url: string;
-        webview_height_ratio: 'tall';
-        webview_share_button: 'show' | 'hide';
-        in_test: boolean;
-    };
-}
-export interface ProfilePersistentMenu {
-    persistent_menu: {
-        locale: string;
-        composer_input_disabled: boolean;
-        call_to_actions: FacebookButton[];
-    };
-}
-export declare type FacebookButton = FacebookPostbackButton | FacebookUrlButton;
-export interface FacebookPostbackButton {
-    type: 'postback';
-    title: string;
+export interface GetStarted {
     payload: string;
 }
-export interface FacebookUrlButton {
-    type: 'web_url';
-    title: string;
+export interface GreetingLocaleItem {
+    locale: string;
+    text: string;
+}
+export interface HomeUrl {
     url: string;
-    webview_height_ratio: 'compact' | 'tall' | 'full';
+    webview_height_ratio: 'tall';
+    webview_share_button: 'show' | 'hide';
+    in_test: false;
+}
+export interface PersistentMenuItem {
+    locale: 'default';
+    composer_input_disabled: boolean;
+    call_to_actions: PersistentMenuButton[];
+}
+export interface TargetAudience {
+    audience_type: TargetAudienceType;
+    countries?: {
+        whitelist?: string[];
+        blacklist?: string[];
+    };
+}
+/**
+ * Facebook buttons
+ */
+export interface PersistentMenuButton extends FacebookPostbackButton, FacebookUrlButton {
+    type: PersistentMenuButtonType;
+    title: string;
+    messenger_extensions?: boolean;
+    payload?: string;
+    url?: string;
+    webview_height_ratio?: PersistentMenuWebviewType;
+}
+export interface FacebookPostbackButton {
+    type: PersistentMenuButtonType;
+    title: string;
+    payload?: string;
+}
+export interface FacebookUrlButton {
+    type: PersistentMenuButtonType;
+    title: string;
+    url?: string;
+    webview_height_ratio?: PersistentMenuWebviewType;
 }
 export interface Property {
     key: string;
