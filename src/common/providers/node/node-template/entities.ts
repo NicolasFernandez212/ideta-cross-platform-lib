@@ -111,8 +111,8 @@ export class ButtonElement
       if (element.targetNode) this.targetNode = element.targetNode;
       if (element.operations) this.operations = element.operations;
       if (element.url) this.url = element.url;
-      if (element.openNewTab) this.openNewTab = element.openNewTab;
-      if (element.messengerExtensions) this.messengerExtensions = element.messengerExtensions;
+      if (typeof element.openNewTab === 'boolean') this.openNewTab = element.openNewTab;
+      if (typeof element.messengerExtensions === 'boolean') this.messengerExtensions = element.messengerExtensions;
       if (element.webviewHeightRatio) this.webviewHeightRatio = element.webviewHeightRatio;
       if (element.service) this.service = element.service;
       if (element.targetNodeLoginSuccess) this.targetNodeLoginSuccess = element.targetNodeLoginSuccess;
