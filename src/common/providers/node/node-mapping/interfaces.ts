@@ -10,6 +10,7 @@ import {
 } from './types';
 
 import { DataComparison, DataOperation } from '../entities';
+import { ApiCertificate } from '../../bot/interfaces';
 
 /*
  * Data Input -----------------------------------------------------------------
@@ -91,6 +92,7 @@ export interface PerformOperationsOptions {
 export interface SendToExternalApiOptions {
   active: boolean;
   options?: {
+    certificates: ApiCertificate[];
     headers?: string;
     body?: string;
     bodyType?: BodyType;

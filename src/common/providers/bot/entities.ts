@@ -1,5 +1,15 @@
 import { randomBytes } from 'crypto';
 
+import {
+  ApiCertificate,
+  BotTemplateSettings,
+  ChannelsOptions,
+  EmailWatermark,
+  NlpServiceInfos,
+  OAuthServiceInfos
+} from './interfaces';
+import { OAuthService } from './types';
+
 import { BotBilling } from '../billing/entities';
 import { ConversationKeepAlive } from '../conversation-session/interfaces';
 import { DataStore } from '../data/entities';
@@ -7,8 +17,6 @@ import { NlpOptions } from '../lexicon/entities';
 import { NlpService } from '../lexicon/types';
 import { MappingOptions } from '../node/node-mapping/entities';
 import { UserEntry } from '../user/interfaces';
-import { BotTemplateSettings, ChannelsOptions, EmailWatermark, NlpServiceInfos, OAuthServiceInfos } from './interfaces';
-import { OAuthService } from './types';
 
 /**
  * Bot model
@@ -17,6 +25,7 @@ import { OAuthService } from './types';
  * Representation : Front, Back, CF
  */
 export class Bot {
+  public apiCertificates?: ApiCertificate[];
   public billing?: BotBilling;
   public channels?: ChannelsOptions;
   public conversationKeepAlives?: ConversationKeepAlive[];
@@ -55,11 +64,12 @@ export class Bot {
 
   constructor(bot: any) {
     if (bot.id) this.id = bot.id;
+    this.apiCertificates = bot.apiCertificates || [];
     this.billing = new BotBilling(bot.billing || {});
     this.channels = bot.channels || {};
     this.conversationKeepAlives = bot.conversationKeepAlives || [];
     this.createdAt = bot.createdAt || null;
-    this.createdBy = bot.createdBy || null;
+    this.createdBy = bot.createdBy || null;
     this.dataStore = bot.dataStore || {};
     this.defaultMappingOptions = bot.defaultMappingOptions || {};
     this.emailWatermark = bot.emailWatermark || {};

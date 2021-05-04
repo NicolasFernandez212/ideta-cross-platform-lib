@@ -1,3 +1,5 @@
+import { ApiCertificate, BotTemplateSettings, ChannelsOptions, EmailWatermark, NlpServiceInfos, OAuthServiceInfos } from './interfaces';
+import { OAuthService } from './types';
 import { BotBilling } from '../billing/entities';
 import { ConversationKeepAlive } from '../conversation-session/interfaces';
 import { DataStore } from '../data/entities';
@@ -5,8 +7,6 @@ import { NlpOptions } from '../lexicon/entities';
 import { NlpService } from '../lexicon/types';
 import { MappingOptions } from '../node/node-mapping/entities';
 import { UserEntry } from '../user/interfaces';
-import { BotTemplateSettings, ChannelsOptions, EmailWatermark, NlpServiceInfos, OAuthServiceInfos } from './interfaces';
-import { OAuthService } from './types';
 /**
  * Bot model
  *
@@ -14,6 +14,7 @@ import { OAuthService } from './types';
  * Representation : Front, Back, CF
  */
 export declare class Bot {
+    apiCertificates?: ApiCertificate[];
     billing?: BotBilling;
     channels?: ChannelsOptions;
     conversationKeepAlives?: ConversationKeepAlive[];

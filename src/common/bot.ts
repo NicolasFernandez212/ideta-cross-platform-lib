@@ -1,5 +1,6 @@
 export { Bot } from './providers/bot/entities';
 export {
+  ApiCertificate,
   BackgroundOption,
   BotTemplateSettings,
   ChannelInfos,

@@ -11,6 +11,23 @@ import { LayoutSize } from '../node/node-template/types';
 import { ButtonElement } from '../node/node-template/entities';
 
 /**
+ * Certificates that can be used by API abstract bubbles
+ *
+ * Type : DB model (bots/{botId}/apiCertificates)
+ * Representation : Front, Back, CF
+ */
+export interface ApiCertificate {
+  host: string;
+  crt?: string;
+  crtFileName?: string;
+  key?: string;
+  keyFileName?: string;
+  pfx?: string;
+  pfxFileName?: string;
+  passphrase?: string;
+}
+
+/**
  * Nlp service infos model
  *
  * Type : DB model (bots/{botId}/nlpServices/{service})
