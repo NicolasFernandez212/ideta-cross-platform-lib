@@ -21,6 +21,7 @@ export declare class Conversation {
     last_delivered: Date;
     last_read: Date;
     last_sent: Date;
+    last_message: string;
     isRead: boolean;
     label: string;
     assigneeId: string;
