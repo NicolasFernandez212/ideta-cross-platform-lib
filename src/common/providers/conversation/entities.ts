@@ -27,6 +27,7 @@ export class Conversation {
   @Column() public last_read: Date;
   @Column() public last_sent: Date;
   @Column() public last_message: string;
+  @Column() public offline_status: string;
   // Cockpit
   @Column({ default: false }) public isRead: boolean;
   @Column() public label: string;
@@ -48,6 +49,7 @@ export class Conversation {
       this.last_read = conversation.last_read ? new Date(conversation.last_read) : new Date();
       this.last_sent = conversation.last_sent ? new Date(conversation.last_sent) : new Date();
       this.last_message = conversation.last_message || null;
+      this.offline_status = conversation.offline_status || null;
       this.isRead = conversation.isRead || false;
       this.label = conversation.label || null;
       if (conversation.assigneeId) this.assigneeId = conversation.assigneeId;

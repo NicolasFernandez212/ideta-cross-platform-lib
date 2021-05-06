@@ -22,6 +22,7 @@ export declare class Conversation {
     last_read: Date;
     last_sent: Date;
     last_message: string;
+    offline_status: string;
     isRead: boolean;
     label: string;
     assigneeId: string;
