@@ -6,7 +6,7 @@ import { PlanId, PlanName } from './types';
  *
  * Representation : Front, CF
  */
-// Circular Depency
+// Circular Depency if located in constants.ts
 export const PlanNameConvention: { [key in PlanId]: PlanName } = {
   free: 'Free',
   starter: 'Starter',

@@ -15,6 +15,8 @@ export type OperationType =
   | 'toUpperCase'
   | 'toLowerCase'
   | 'stringify'
+  | 'encodeB64'
+  | 'decodeB64'
   // number operations
   | 'add'
   | 'remove'
@@ -37,6 +39,8 @@ export type OperationType =
   // object operations
   | 'get'
   | 'merge'
+  // date operations
+  | 'addTime'
   // misc operations
   | 'parse'
   | 'conditional';
