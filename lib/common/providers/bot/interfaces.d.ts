@@ -88,6 +88,7 @@ export interface ChannelsOptions {
     facebook: FacebookChannelInfos;
     google: GoogleChannelInfos;
     slack: SlackChannelInfos;
+    skype: SkypeChannelInfos;
     smooch: SmoochChannelInfos;
     twiliovoice: TwilioChannelInfos;
     workplace: WorkplaceChannelInfos;
@@ -217,6 +218,25 @@ export interface SlackTeam {
     team_id: string;
     team_name: string;
     user_id: string;
+}
+/**
+ * Specified channel infos model for SKYPE
+ *
+ * Type : DB model (bots/{botId}/channels/skype)
+ * Representation : Front, Back, CF
+ */
+export interface SkypeChannelInfos extends ChannelInfos {
+    pageInfos: SkypeAppInfos;
+}
+/**
+ * Skype pageInfos model
+ *
+ * Type : DB model (bots/{botId}/channels/skype/pageInfos)
+ * Representation : Front, Back, CF
+ */
+export interface SkypeAppInfos {
+    appId: string;
+    appSecret: string;
 }
 /**
  * Specified channel infos model for GOOGLE
