@@ -250,7 +250,7 @@ export interface SlackTeam {
  * Representation : Front, Back, CF
  */
 export interface SkypeChannelInfos extends ChannelInfos {
-  pageInfos: SkypeAppInfos;
+  pageInfos: SkypePageInfos;
 }
 
 /**
@@ -259,9 +259,10 @@ export interface SkypeChannelInfos extends ChannelInfos {
  * Type : DB model (bots/{botId}/channels/skype/pageInfos)
  * Representation : Front, Back, CF
  */
-export interface SkypeAppInfos {
-  appId: string;
-  appSecret: string;
+export interface SkypePageInfos {
+  client_id: string;
+  client_secret: string;
+  botId: string;
 }
 
 /**
