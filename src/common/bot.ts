@@ -25,6 +25,8 @@ export {
   SlackChannelInfos,
   SlackAppInfos,
   SlackTeam,
+  SkypeAppInfos,
+  SkypeChannelInfos,
   SmoochChannelInfos,
   SmoochPageInfos,
   TwilioChannelInfos,
