@@ -237,7 +237,6 @@ export interface SkypeChannelInfos extends ChannelInfos {
 export interface SkypePageInfos {
     client_id: string;
     client_secret: string;
-    botId: string;
 }
 /**
  * Specified channel infos model for GOOGLE
