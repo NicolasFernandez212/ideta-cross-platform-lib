@@ -255,6 +255,7 @@ export interface SkypeChannelInfos extends ChannelInfos {
 
 /**
  * Skype pageInfos model
+ * Note: snake case is used to comply to skype's params format
  *
  * Type : DB model (bots/{botId}/channels/skype/pageInfos)
  * Representation : Front, Back, CF

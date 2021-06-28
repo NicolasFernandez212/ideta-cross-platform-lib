@@ -1,6 +1,5 @@
 import { BodyType, DateDisplay, DateInput, DateOutput, FallbackType, FormatCheckType, OptionBehaviorType, RequestType } from './types';
 import { DataComparison, DataOperation } from '../entities';
-import { ApiCertificate } from '../../bot/interfaces';
 export interface TriggersOptions {
     active: boolean;
     options?: Trigger[];
@@ -68,7 +67,6 @@ export interface PerformOperationsOptions {
 export interface SendToExternalApiOptions {
     active: boolean;
     options?: {
-        certificates: ApiCertificate[];
         headers?: string;
         body?: string;
         bodyType?: BodyType;

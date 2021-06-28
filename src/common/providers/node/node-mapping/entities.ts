@@ -116,7 +116,6 @@ export class MappingSwitch {
       };
       if (get(switchOptions, 'sendToExternalApi.options')) {
         this.sendToExternalApi.options = {
-          certificates: get(switchOptions, 'sendToExternalApi.options.certificates', []),
           headers: get(switchOptions, 'sendToExternalApi.options.headers', null),
           body: get(switchOptions, 'sendToExternalApi.options.body', null),
           bodyType: get(switchOptions, 'sendToExternalApi.options.bodyType', null),
