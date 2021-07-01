@@ -32,6 +32,7 @@ export {
   TwilioChannelInfos,
   TwilioPageInfos,
   VocalOption,
+  WebOption,
   WebChannelInfos,
   WebIntegration,
   WebMenu,

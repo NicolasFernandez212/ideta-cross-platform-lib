@@ -309,6 +309,8 @@ export interface DisplayOptions {
     logo: LogoOption;
     background: BackgroundOption;
     icon: IconOption;
+    web: WebOption;
+    navigation: NavigationOption;
     colors: ColorsOption;
     chat: ChatOption;
     vocal: VocalOption;
@@ -372,6 +374,38 @@ export interface IconOption extends DisplayOption {
     key: 'icon';
     values: {
         url: string;
+    };
+}
+/**
+ * Web settings model
+ *
+ * Type : DB model (bots/{botId}/channels/web/displayOptions/web)
+ * Representation : Front, CF
+ */
+export interface WebOption extends DisplayOption {
+    active: boolean;
+    key: 'web';
+    values: {
+        webHeaderActive: boolean;
+        webFooterActive: boolean;
+        webHeader: string;
+        webFooter: string;
+    };
+}
+/**
+ * Navigation settings model
+ *
+ * Type : DB model (bots/{botId}/channels/web/displayOptions/navigation)
+ * Representation : Front, CF
+ */
+export interface NavigationOption extends DisplayOption {
+    active: boolean;
+    key: 'navigation';
+    values: {
+        useAltId: boolean;
+        keepOpen: boolean;
+        autoLoad: string;
+        loadOpen: string;
     };
 }
 /**
